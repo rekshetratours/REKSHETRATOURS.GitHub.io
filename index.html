@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rekshetra Tours — Kaleshwaram Pilgrimage &amp; Temple Tours</title>
+<meta name="description" content="Kaleshwaram Temple pilgrimage &amp; tourism guide — Sri Kaleshwara Mukteshwara Swamy Temple, Triveni Sangamam, Godavari-Pranahitha-Saraswathi confluence, Ashta Theerthalu, Medigadda &amp; Annaram Barrage, Saraswathi Pushkaralu, and 50km circuit temples near Bhupalapally, Telangana. Plan your Kaleshwaram Yatra, darshan timings, puja/seva booking and stay.">
+<meta name="keywords" content="Kaleshwaram, Kaleshwaram Temple, Kaleshwaram Tourism, Telangana Temples, Bhupalapally, Saraswathi Temple, Saraswathi, Godavari, Godavari Pushkaralu, Triveni Sangamam, Kaleshwaram Pilgrimage, Kaleshwaram Yatra, Kaleshwaram Darshan, Kaleshwaram Temple Timings, Kaleshwaram Puja, Kaleshwaram Seva, Kaleshwaram Accommodation, Kaleshwaram Travel Guide, Kaleshwaram Tourist Places, Kaleshwaram 50 KM Circuit, Panakanti Brahmana Satram, Ashta Theerthalu, Yamakonam, Elephant Park">
+<meta property="og:title" content="Rekshetra Tours — Kaleshwaram Pilgrimage &amp; Temple Tours">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Noto+Sans+Telugu:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="index">
+
+<header class="site">
+  <div class="nav-inner">
+    <div class="brand">🛕 Rekshetra Tours</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" data-page="index">Home</a>
+      <a href="kaleshwaram.html" data-page="kaleshwaram">Kaleshwaram</a>
+      <a href="index.html#circuit" data-page="circuit">50 KM Circuit</a>
+      <a href="tours.html" data-page="tours">Tours</a>
+      <a href="plan.html" data-page="plan">Plan Your Trip</a>
+      <a href="contact.html" data-page="contact">Contact</a>
+      <a class="btn-whatsapp btn-whatsapp-mobile" href="contact.html">📞 Contact Us</a>
+    </nav>
+    <a class="btn-whatsapp" href="contact.html">📞 Contact Us</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <p class="eyebrow">DISCOVER THE SACRED JOURNEY OF</p>
+    <h1>Kaleshwaram</h1>
+    <h2>Pilgrimage &amp; Temple Tours</h2>
+    <p class="tel-line">కాలేశ్వరం యాత్రీ &amp; ఆలయ సందర్శన పర్యటనలు</p>
+    <p class="lede">Explore temples, sacred rivers, heritage sites and spiritual destinations around Kaleshwaram with customized tour packages.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="plan.html">🪔 Plan Your Yatra →</a>
+      <a class="btn-secondary" href="tours.html">Explore Tours →</a>
+    </div>
+    <div class="hero-badge">
+      <span>📍</span>
+      <span>Sri Kaleshwara Mukteshwara Swamy Temple<br><strong>Kaleshwaram, Telangana</strong></span>
+    </div>
+  </div>
+</section>
+
+<div class="filter-bar" id="circuit">
+  <div class="filter-row">
+    <div class="chip active" data-filter="all">📍 All Places (50 km)</div>
+    <div class="chip" data-filter="temple">🛕 Temples</div>
+    <div class="chip" data-filter="theertha">🌊 Theerthas</div>
+    <div class="chip" data-filter="photo">📷 Tourist Places</div>
+    <div class="chip" data-filter="heritage">🏛️ Heritage</div>
+    <div class="chip" data-filter="nature">🌿 Nature</div>
+    <div class="chip" data-filter="barrage">🌉 Barrage / Projects</div>
+    <div class="search-box">🔍 <input type="text" placeholder="Search places, distance, type..."></div>
+  </div>
+</div>
+
+<section class="explorer">
+  <div class="explorer-grid">
+
+    <div class="panel">
+      <div class="panel-head">Places (50 km) <span class="count-pill" id="placeCount">32</span></div>
+      <div class="place-list" id="placeList"></div>
+    </div>
+
+    <div class="panel map-panel">
+      <div class="map-toolbar">
+        <span class="ring-toggle">🎯 Within 10 km</span>
+        <span class="dist-toggle">10 - 25 km</span>
+        <span class="dist-toggle">25 - 50 km</span>
+        <span class="dist-toggle">Full 50 km</span>
+      </div>
+      <div class="map-canvas" id="mapCanvas">
+        <div class="ring r3"></div>
+        <div class="ring r2"></div>
+        <div class="ring r1"></div>
+        <div class="legend">
+          <div><span class="dot" style="background:#c0392b"></span>0 - 10 km</div>
+          <div><span class="dot" style="background:#2f6fae"></span>10 - 25 km</div>
+          <div><span class="dot" style="background:#3f7a52"></span>25 - 50 km</div>
+        </div>
+        <div class="compass">N ↑</div>
+        <div class="marker center" style="top:50%; left:50%;">Kaleshwaram</div>
+        <div class="scale-bar">0 —— 10 —— 20 —— 30 —— 40 —— 50 km</div>
+        <a class="view-full" href="index.html#circuit">⤢ View Full Map</a>
+      </div>
+    </div>
+
+    <div class="panel" id="detailPanel">
+      <div class="detail-photo">
+        <span class="detail-photo-icon">🛕</span>
+        <span class="arrow left">‹</span><span class="arrow right">›</span>
+      </div>
+      <div class="detail-body">
+        <h3 id="dName">Kaleshwaram Temple</h3>
+        <span class="tel" id="dNameTel">శ్రీ కాలేశ్వర ముక్తేశ్వర స్వామి ఆలయం</span>
+        <ul class="detail-meta">
+          <li>📍 Distance from Kaleshwaram : <b id="dDist">0 km</b></li>
+          <li>🏷️ Type : <b id="dType">Temple</b></li>
+          <li>⏱️ Travel Time : <b id="dTime">0 min</b></li>
+        </ul>
+        <p class="desc" id="dDesc">Sri Kaleshwara Mukteshwara Swamy Temple is a major pilgrimage destination known for its spiritual significance, Triveni Sangamam and rich cultural heritage.</p>
+        <a class="btn-block red" style="display:block;text-decoration:none;" href="https://www.google.com/maps/search/?api=1&query=Kaleshwaram+Temple" target="_blank" rel="noopener">➤ Get Directions</a>
+        <div class="btn-row">
+          <a class="btn-block cream" style="text-decoration:none;" href="gallery.html">📷 View Photos</a>
+          <a class="btn-block green" style="text-decoration:none;" href="plan.html">➕ Add to Plan</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="nearby">
+  <div class="nearby-head">
+    <h3>Nearby Places by Distance</h3>
+    <a href="index.html#circuit">View All</a>
+  </div>
+  <div class="nearby-strip" id="nearbyStrip"></div>
+</section>
+
+<section class="ads-row-wrap">
+  <div class="wrap">
+    <div class="ads-row">
+      <a class="ad-slot filled" href="https://www.google.com/maps/dir/?api=1&destination=Panakanti+Brahmana+Satram%2C+Gundam+Cheruvu+Colony%2C+Adi+Mukteshwaralayam+Road%2C+Kaleshwaram%2C+Telangana+505504&travelmode=driving" target="_blank" rel="noopener" aria-label="Get directions to Panakanti Brahmana Satram from your current location">
+        <img src="panakanti-satram-banner.jpg" alt="Panakanti Brahmana Satram, Kaleshwaram — banner with QR code and contact 9391254540">
+        <span class="ad-caption tel">పనకంటి బ్రాహ్మణ సత్రం</span>
+        <span class="ad-caption">📞 9391254540 &nbsp;•&nbsp; tap for directions</span>
+      </a>
+      <div class="ad-slot empty"><span>ప్రకటన స్థలం<br>ఖాళీగా ఉంది</span></div>
+      <div class="ad-slot empty"><span>ప్రకటన స్థలం<br>ఖాళీగా ఉంది</span></div>
+      <div class="ad-slot empty"><span>ప్రకటన స్థలం<br>ఖాళీగా ఉంది</span></div>
+    </div>
+    <p class="ads-note">💬 సత్రం WhatsApp ద్వారా సంప్రదించగలరు: <a href="https://wa.me/919391254540" target="_blank" rel="noopener">9391254540</a> &nbsp;•&nbsp; ఇక్కడ మీ ప్రకటన కోసం <a href="mailto:rekshetratours@gmail.com">rekshetratours@gmail.com</a> కి రాయండి</p>
+  </div>
+</section>
+
+<section id="tours-preview">
+  <div class="section-head">
+    <div class="rule">✦</div>
+    <h2>Popular Pilgrimage Tours</h2>
+    <p>Choose a package or get a customized plan for your Kaleshwaram Yatra.</p>
+  </div>
+  <div class="tours">
+    <div class="tour-card">
+      <div class="tour-photo">🛕<span class="tour-badge">1 Day</span></div>
+      <div class="tour-body">
+        <h4>Kaleshwaram One-Day Tour</h4>
+        <p class="desc">Temple Darshan • Triveni Sangamam • Local Sightseeing</p>
+        <div class="tour-feats">
+          <div class="f"><div class="ico">🛕</div>Temple Visit</div>
+          <div class="f"><div class="ico">🚶</div>Local Sightseeing</div>
+          <div class="f"><div class="ico">🚗</div>Travel Assistance</div>
+        </div>
+        <a class="btn-outline" href="tours.html">View Details →</a>
+      </div>
+    </div>
+    <div class="tour-card">
+      <div class="tour-photo two">🌊<span class="tour-badge">2 Days</span></div>
+      <div class="tour-body">
+        <h4>Kaleshwaram Two-Day Pilgrimage</h4>
+        <p class="desc">Temple Visit • Nearby Temples • Local Sightseeing • Stay Assistance</p>
+        <div class="tour-feats">
+          <div class="f"><div class="ico">🛕</div>Temple Visit</div>
+          <div class="f"><div class="ico">🛏️</div>Stay Assistance</div>
+          <div class="f"><div class="ico">📍</div>Nearby Destinations</div>
+        </div>
+        <a class="btn-outline" href="tours.html">View Details →</a>
+      </div>
+    </div>
+    <div class="tour-card">
+      <div class="tour-photo">🗺️<span class="tour-badge">Custom</span></div>
+      <div class="tour-body">
+        <h4>Kaleshwaram Temple Circuit</h4>
+        <p class="desc">Explore Kaleshwaram and nearby spiritual destinations</p>
+        <div class="tour-feats">
+          <div class="f"><div class="ico">📍</div>Multiple Temples</div>
+          <div class="f"><div class="ico">🗓️</div>Flexible Itinerary</div>
+          <div class="f"><div class="ico">🚐</div>Group Travel</div>
+        </div>
+        <a class="btn-outline" href="tours.html">View Details →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="section-head" style="padding-top:0;">
+    <div class="rule">✦</div>
+    <h2>Why Travel With Rekshetra Tours?</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-item"><div class="ico">⚙️</div><div class="label">Customized Yatra Plans</div></div>
+    <div class="why-item"><div class="ico">🛕</div><div class="label">Temple Tourism Specialists</div></div>
+    <div class="why-item"><div class="ico">👪</div><div class="label">Family &amp; Group Tours</div></div>
+    <div class="why-item"><div class="ico">🛏️</div><div class="label">Accommodation Support</div></div>
+    <div class="why-item"><div class="ico">🚗</div><div class="label">Local Transport Support</div></div>
+    <div class="why-item"><div class="ico">🤝</div><div class="label">Reliable &amp; Personalized Service</div></div>
+  </div>
+</section>
+
+<section class="tag-cloud">
+  <div class="wrap">
+    <h6>Explore Kaleshwaram &amp; Nearby</h6>
+    <div class="tags">
+      <span>Kaleshwaram Temple</span><span>Triveni Sangamam</span><span>Ashta Theerthalu</span>
+      <span>Saraswathi Temple</span><span>Godavari</span><span>Pranahitha</span><span>Saraswathi River</span>
+      <span>Kaleshwaram Pushkaralu</span><span>Godavari Pushkaralu</span><span>Kaleshwaram Yatra</span>
+      <span>Kaleshwaram Darshan</span><span>Temple Timings</span><span>Puja &amp; Seva</span>
+      <span>Medigadda Barrage</span><span>Annaram Barrage</span><span>Kannepalli Pump House</span>
+      <span>Mahadevpur Temples</span><span>Nainpaka Temple</span><span>Somnur Sangam</span>
+      <span>Chennuru</span><span>Sironcha</span><span>Manthani Temples</span>
+      <span>Yamakonam</span><span>Elephant Park</span><span>Panakanti Brahmana Satram</span>
+      <span>Bhupalapally</span><span>Telangana Temple Tourism</span><span>50 KM Circuit</span>
+    </div>
+  </div>
+</section>
+
+<footer id="contact-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img class="mark" src="logo.jpg" alt="Ramakant Eshwara Kshetra Consulting logo">
+      <div>
+        <h5>Rekshetra Tours</h5>
+        <p>Kaleshwaram Pilgrimage &amp; Temple Tours</p>
+      </div>
+    </div>
+    <div>
+      <h6>QUICK LINKS</h6>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="kaleshwaram.html">Kaleshwaram</a></li>
+        <li><a href="index.html#circuit">50 KM Circuit</a></li>
+        <li><a href="tours.html">Tours</a></li>
+        <li><a href="plan.html">Plan Your Trip</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6>CONTACT US</h6>
+      <div class="contact-item">📍 Kaleshwaram, Bhupalapally District, Telangana – 505504</div>
+      <div class="contact-item">🛕 Temple info only: <a href="tel:+919491018012" style="color:inherit">94910 18012</a></div>
+      <div class="contact-item">✉️ <a href="mailto:rekshetratours@gmail.com" style="color:inherit">rekshetratours@gmail.com</a></div>
+      <div class="contact-item">🌐 www.rekshetratours.com</div>
+    </div>
+    <div>
+      <h6>FOLLOW US</h6>
+      <div class="social-row">
+        <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="https://www.youtube.com/@REKSHETRATOURSKALESWARAM" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Rekshetra Tours. All Rights Reserved.
+      &nbsp;•&nbsp; <span class="visitor-counter">👁 Visitors: <b id="visitorCount">…</b></span>
+    </span>
+    <span><a href="about.html#privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="about.html#terms">Terms &amp; Conditions</a></span>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script src="explorer.js"></script>
+</body>
+</html>
