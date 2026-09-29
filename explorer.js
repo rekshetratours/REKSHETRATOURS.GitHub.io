@@ -24,7 +24,6 @@ function markerIcon(cat){ return {temple:"🛕", theertha:"🌊", photo:"📷", 
 
 const list = document.getElementById('placeList');
 const canvas = document.getElementById('mapCanvas');
-const strip = document.getElementById('nearbyStrip');
 document.getElementById('placeCount').textContent = PLACES.length;
 
 PLACES.forEach((p,i)=>{
@@ -52,14 +51,6 @@ PLACES.forEach((p,i)=>{
     canvas.appendChild(m);
   }
 
-  if(i < 8){
-    const nc = document.createElement('div');
-    nc.className='nearby-card';
-    nc.innerHTML = `<div class="thumb" style="background:${grad(i)}">${markerIcon(p.cat)}<span class="num">${i+1}</span></div>
-      <div class="cname">${p.name}</div><div class="cdist">${p.dist} km</div>`;
-    nc.addEventListener('click', ()=>showDetail(p,i));
-    strip.appendChild(nc);
-  }
 });
 
 function showDetail(p,i){
