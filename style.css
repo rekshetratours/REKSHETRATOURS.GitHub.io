@@ -439,3 +439,15 @@ footer .contact-item{display:flex; gap:10px; margin-bottom:12px; font-size:.85re
   display:inline-flex; align-items:center; gap:6px; font-size:.75rem; color:#c9b494;
 }
 .visitor-counter b{color:var(--gold-light); font-weight:700;}
+
+/* SEO update: linked tags, mobile quick bar */
+.tags a{font-size:.76rem; font-weight:600; color:var(--maroon); background:var(--white); border:1px solid var(--line); padding:6px 12px; border-radius:16px; text-decoration:none;}
+.tags a:hover{border-color:var(--gold);}
+a.ad-slot.empty{text-decoration:none; color:var(--maroon); font-weight:600;}
+.mbar{display:none;}
+@media (max-width:860px){
+  .mbar{display:flex; position:fixed; left:0; right:0; bottom:0; z-index:50; background:var(--maroon); border-top:2px solid var(--gold);}
+  .mbar a{flex:1; text-align:center; color:#fff; text-decoration:none; padding:12px 4px; font-size:.85rem; font-weight:600;}
+  .mbar a+a{border-left:1px solid var(--maroon-dark);}
+  body{padding-bottom:50px;}
+}
