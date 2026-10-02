@@ -464,3 +464,24 @@ a.ad-slot.empty{text-decoration:none; color:var(--maroon); font-weight:600;}
 @media (max-width:720px){
   .nav-links a.nav-puja{margin:12px 24px; width:auto; text-align:center; border-bottom:1px solid #b9600f;}
 }
+
+/* v3: nav fit + content helpers */
+@media (max-width:1280px) and (min-width:721px){
+  .brand{position:static; margin-right:16px;}
+  .nav-inner{justify-content:flex-start; padding:0 14px;}
+  .nav-links{gap:14px; font-size:.88rem;}
+  .nav-links a.nav-puja{padding:6px 14px;}
+}
+.fill{background:#FFF2A8; padding:0 6px; border-radius:3px; font-weight:600;}
+.rt-note{background:var(--cream-dark); border:1px dashed var(--gold); padding:12px 14px; border-radius:4px; font-size:.92rem;}
+.rt-table{width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line); margin:12px 0;}
+.rt-table th,.rt-table td{padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top;}
+.rt-table th{background:var(--cream-dark); color:var(--maroon);}
+.rt-faq{background:#fff; border:1px solid var(--line); border-radius:4px; margin:10px 0; padding:10px 16px;}
+.rt-faq summary{cursor:pointer; font-weight:700; color:var(--maroon);}
+.places-seo{padding:36px 24px; background:var(--white);}
+.places-seo .wrap{max-width:1000px; margin:0 auto;}
+.places-seo h2{color:var(--maroon);}
+.places-seo ul{columns:2; column-gap:32px; padding-left:18px; font-size:.92rem;}
+.places-seo li{margin:0 0 10px; break-inside:avoid;}
+@media (max-width:720px){.places-seo ul{columns:1;}}
