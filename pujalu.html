@@ -73,6 +73,30 @@ main{max-width:1100px;margin:auto;padding:26px 16px 10px}
 .ask{display:inline-block;text-align:center;background:var(--saffron);color:#fff;text-decoration:none;font-weight:600;padding:9px 12px;border-radius:8px;font-size:.93rem}
 .ask:hover{background:#b9650f}
 
+
+/* media: photos & videos */
+.thumb{position:relative;display:block;width:calc(100% + 32px);margin:-16px -16px 12px;padding:0;border:0;background:#3c1010;cursor:pointer;border-radius:5px 5px 0 0;overflow:hidden;aspect-ratio:16/9}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:#fff;background:rgba(0,0,0,.28)}
+.thumb .play span{background:rgba(217,121,26,.95);width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding-left:5px}
+.vbtn{margin:0 0 10px;align-self:flex-start;background:none;border:1.5px solid var(--maroon);color:var(--maroon);border-radius:8px;padding:6px 12px;font:600 .9rem "Noto Sans Telugu",sans-serif;cursor:pointer}
+.gallery{margin:34px 0 8px}
+.gallery h2{font-family:"Noto Serif Telugu",serif;color:var(--maroon);margin:0 0 12px;font-size:1.3rem}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.g-item{position:relative;margin:0}
+.g-item .thumb{width:100%;margin:0;border-radius:10px}
+.g-item figcaption{font-size:.9rem;margin-top:5px;color:var(--ink)}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:16px}
+.lb.on{display:flex}
+.lb-box{max-width:960px;width:100%;text-align:center}
+.lb-box img,.lb-box video{max-width:100%;max-height:80vh;border-radius:8px;background:#000}
+.lb-box iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:8px;background:#000}
+.lb-cap{color:#fbe9cf;margin-top:8px;font-size:.95rem}
+.thumb .count{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.65);color:#fff;font-size:.82rem;padding:3px 9px;border-radius:14px}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:1.9rem;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;padding-bottom:4px}
+.lb-prev{left:8px}.lb-next{right:8px}
+.lb-x{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));right:14px;background:#fff;border:0;border-radius:50%;width:42px;height:42px;font-size:1.4rem;cursor:pointer}
+
 /* shaswata explainer */
 .how{margin:34px 0 8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
 .how h2{font-family:"Noto Serif Telugu",serif;color:var(--maroon);margin:0 0 8px;font-size:1.3rem}
@@ -132,6 +156,11 @@ footer{margin-top:40px;background:#3c1010;color:#f3dfc3;padding:28px 16px 22px}
   <p class="intro" id="intro"></p>
   <div class="grid" id="grid" aria-live="polite"></div>
 
+  <section class="gallery" id="gallery" hidden>
+    <h2>ఫోటోలు &amp; వీడియోలు</h2>
+    <div class="g-grid" id="gGrid"></div>
+  </section>
+
   <section class="how" id="how">
     <h2>శాశ్వత పూజ ఎలా చేయించాలి?</h2>
     <p>శాశ్వత పూజలో మీరు ఒక్కసారి నిర్ణీత మొత్తం చెల్లిస్తే, ప్రతి సంవత్సరం మీరు ఎంచుకున్న తిథి / నక్షత్రం / తేదీన మీ పేరు మీద ఆలయంలో పూజ జరుగుతుంది.</p>
@@ -143,6 +172,13 @@ footer{margin-top:40px;background:#3c1010;color:#f3dfc3;padding:28px 16px 22px}
     </ol>
   </section>
 </main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo or video">
+  <button class="lb-x" id="lbX" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lb-box" id="lbBox"></div>
+</div>
 
 <footer>
   <div class="foot">
@@ -170,6 +206,11 @@ footer{margin-top:40px;background:#3c1010;color:#f3dfc3;padding:28px 16px 22px}
    time / fee: ఆలయం నుంచి నిర్ధారించిన తర్వాత రాయండి.
    ఖాళీగా ("") వదిలితే "ఆలయ కార్యాలయంలో నిర్ధారించుకోండి" అని కనిపిస్తుంది.
    ============================================================ */
+/* ప్రతి పూజకు ఫోటోలు / వీడియో కావాలంటే ఆ లైన్‌లో ఇవి add చేయండి (అన్నీ optional):
+     photos:["a.jpg","b.jpg"]                  ← ఎన్ని ఫోటోలైనా (ఇదే folder లో ఉండాలి)
+     yt:"https://youtu.be/XXXXXXXXXXX"         ← YouTube వీడియో link (ఇక్కడే వీడియో వస్తుంది)
+     video:"harathi.mp4", poster:"harathi.jpg" ← mp4 file (25 MB లోపు; పెద్ద వీడియోలు YouTube లో పెట్టడం మంచిది)
+   ఆ పూజ కార్డ్ మీద నొక్కితే ఆ పూజ ఫోటోలు, వీడియో మాత్రమే తెరుచుకుంటాయి. */
 var PUJAS = [
   /* ---------- నిత్య పూజలు ---------- */
   {cat:"nitya", te:"సుప్రభాత సేవ", en:"Suprabhata Seva",
@@ -197,7 +238,13 @@ var PUJAS = [
 
   /* ---------- ప్రత్యేక పూజలు ---------- */
   {cat:"special", te:"పితృ తర్పణం / పిండ ప్రదానం", en:"Pitru Tarpanam at Triveni Sangamam",
-   desc:"గోదావరి, ప్రాణహిత, సరస్వతి సంగమ ప్రదేశంలో పితృదేవతలకు తర్పణాలు.", time:"", fee:""},
+   desc:"గోదావరి, ప్రాణహిత, సరస్వతి సంగమ ప్రదేశంలో పితృదేవతలకు తర్పణాలు.", time:"", fee:"",
+   photos:["sangamam-1.jpg","sangamam-2.jpg","sangamam-3.jpg","sangamam-4.jpg","sangamam-5.jpg"],
+   yt:"" /* ← త్రివేణి సంగమం వీడియో YouTube link ఇక్కడ పెట్టండి */},
+  {cat:"special", te:"త్రివేణి సంగమ హారతి", en:"Triveni Sangamam Harathi",
+   desc:"గోదావరి, ప్రాణహిత, సరస్వతి నదుల సంగమ ప్రదేశంలో నదికి సమర్పించే మంగళ హారతి.", time:"", fee:"",
+   photos:["harathi-1.jpg","harathi-2.jpg","harathi-3.jpg","harathi-4.jpg"],
+   yt:"" /* ← హారతి వీడియో YouTube link ఇక్కడ పెట్టండి */},
   {cat:"special", te:"మహాశివరాత్రి విశేష పూజ", en:"Maha Shivaratri Special Puja",
    desc:"మహాశివరాత్రి రోజున రాత్రి జాగరణతో జరిగే విశేష అభిషేకాలు.", time:"", fee:""},
   {cat:"special", te:"కార్తీక మాసం దీపోత్సవం", en:"Karthika Deepotsavam",
@@ -214,6 +261,96 @@ var INTRO = {
   special:"పండుగలు, మాసాలు, సంగమ క్షేత్రం ప్రత్యేకతల కోసం జరిగే విశేష పూజలు."
 };
 
+
+/* పేజీ చివర "ఫోటోలు & వీడియోలు" గ్యాలరీ — ఇక్కడ add చేయండి. ఖాళీగా ఉంటే గ్యాలరీ కనిపించదు.
+   ఉదాహరణలు (// తీసేసి వాడండి):
+   {img:"harathi1.jpg", cap:"త్రివేణి సంగమ హారతి"},
+   {yt:"https://youtu.be/XXXXXXXXXXX", cap:"కాళేశ్వర క్షేత్రం"},
+   {video:"puja.mp4", poster:"puja.jpg", cap:"అభిషేకం"}
+*/
+var MEDIA = [
+  // {img:"harathi1.jpg", cap:"త్రివేణి సంగమ హారతి"},
+];
+
+function ytId(u){
+  if(!u) return "";
+  var m = String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([\w-]{11})/);
+  if(m) return m[1];
+  return /^[\w-]{11}$/.test(u) ? u : "";
+}
+
+/* ఒక పూజ / ఒక గ్యాలరీ ఐటమ్‌కు సంబంధించిన ఫోటోలు + వీడియోలు అన్నీ ఒక "set" గా ఉంటాయి.
+   ఆ కార్డ్ మీద నొక్కితే ఆ set మాత్రమే తెరుచుకుంటుంది. */
+var SETS = [];
+function slidesOf(it){
+  var s = [], ph = (it.photos || []).slice();
+  if(it.img) ph.unshift(it.img);
+  ph.forEach(function(f){ s.push({k:"photo", src:f}); });
+  var id = ytId(it.yt);
+  if(id) s.push({k:"yt", id:id});
+  if(it.video) s.push({k:"mp4", src:it.video, poster:it.poster||""});
+  return s;
+}
+function mediaOf(it, cap){
+  var s = slidesOf(it);
+  if(!s.length) return {thumb:"", vbtn:""};
+  var n = SETS.push({slides:s, cap:cap||""}) - 1, c = esc(cap||""), f = s[0];
+  var cover = f.k==="photo" ? f.src : (f.k==="yt" ? "https://i.ytimg.com/vi/"+f.id+"/hqdefault.jpg" : f.poster);
+  var photos = 0, vAt = -1;
+  s.forEach(function(x,i){ if(x.k==="photo") photos++; else if(vAt<0) vAt = i; });
+  var vids = s.length - photos;
+  var badge = s.length>1 ? '<span class="count">' + (photos ? '📷 '+photos : '') + (photos && vids ? ' · ' : '') + (vids ? '▶ '+vids : '') + '</span>' : '';
+  var play = f.k==="photo" ? '' : '<span class="play"><span>▶</span></span>';
+  var th = '<button class="thumb" data-set="'+n+'" data-at="0" aria-label="ఫోటోలు, వీడియోలు చూడండి: '+c+'">' +
+           (cover ? '<img src="'+esc(cover)+'" alt="'+c+'" loading="lazy">' : '') + play + badge + '</button>';
+  var vb = (photos && vAt>=0) ? '<button class="vbtn" data-set="'+n+'" data-at="'+vAt+'">▶ వీడియో చూడండి</button>' : '';
+  return {thumb:th, vbtn:vb};
+}
+
+/* lightbox (ఫోటోలు ముందు/వెనుక, వీడియో) */
+var lb = document.getElementById("lb"), lbBox = document.getElementById("lbBox");
+var lbPrev = document.getElementById("lbPrev"), lbNext = document.getElementById("lbNext");
+var cur = null, idx = 0;
+function showSlide(){
+  var st = cur.slides[idx], cap = esc(cur.cap), h = "";
+  if(st.k==="photo") h = '<img src="'+esc(st.src)+'" alt="'+cap+'">';
+  else if(st.k==="yt") h = '<iframe src="https://www.youtube-nocookie.com/embed/'+st.id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="'+cap+'"></iframe>';
+  else h = '<video src="'+esc(st.src)+'" controls autoplay playsinline></video>';
+  var many = cur.slides.length > 1;
+  lbBox.innerHTML = h + '<div class="lb-cap">' + cap + (many ? ' &nbsp;(' + (idx+1) + ' / ' + cur.slides.length + ')' : '') + '</div>';
+  lbPrev.style.display = lbNext.style.display = many ? "flex" : "none";
+}
+function openSet(n, at){ cur = SETS[n]; idx = at || 0; lb.classList.add("on"); showSlide(); }
+function step(d){ if(!cur) return; idx = (idx + d + cur.slides.length) % cur.slides.length; showSlide(); }
+function closeLB(){ lb.classList.remove("on"); lbBox.innerHTML = ""; cur = null; }
+document.addEventListener("click", function(e){
+  var b = e.target.closest("[data-set]");
+  if(b){ openSet(+b.getAttribute("data-set"), +b.getAttribute("data-at")); return; }
+  if(e.target===lb || e.target.id==="lbX") closeLB();
+});
+lbPrev.addEventListener("click", function(){ step(-1); });
+lbNext.addEventListener("click", function(){ step(1); });
+document.addEventListener("keydown", function(e){
+  if(!cur) return;
+  if(e.key==="Escape") closeLB();
+  else if(e.key==="ArrowLeft") step(-1);
+  else if(e.key==="ArrowRight") step(1);
+});
+var tx = 0;
+lb.addEventListener("touchstart", function(e){ tx = e.changedTouches[0].clientX; }, {passive:true});
+lb.addEventListener("touchend", function(e){
+  var dx = e.changedTouches[0].clientX - tx;
+  if(Math.abs(dx) > 60) step(dx < 0 ? 1 : -1);
+}, {passive:true});
+
+/* gallery */
+(function(){
+  if(!MEDIA.length) return;
+  var g = "";
+  MEDIA.forEach(function(m){ var th = mediaOf(m, m.cap).thumb; if(th) g += '<figure class="g-item">'+th+'<figcaption>'+esc(m.cap||"")+'</figcaption></figure>'; });
+  if(g){ document.getElementById("gGrid").innerHTML = g; document.getElementById("gallery").hidden = false; }
+})();
+
 var TBC = "ఆలయ కార్యాలయంలో నిర్ధారించుకోండి";
 var grid = document.getElementById("grid");
 var intro = document.getElementById("intro");
@@ -227,10 +364,11 @@ function render(cat){
   PUJAS.filter(function(p){return p.cat===cat;}).forEach(function(p){
     var subj = encodeURIComponent("పూజ బుకింగ్ వివరాలు: " + p.te + " (" + p.en + ")");
     var body = encodeURIComponent("నమస్కారం,\n" + p.te + " గురించి వివరాలు కావాలి.\n\nపేరు:\nగోత్రం:\nనక్షత్రం:\nకావలసిన తేదీ:\nఫోన్ నంబర్:");
-    html += '<article class="card">' +
+    var md = mediaOf(p, p.te);
+    html += '<article class="card">' + md.thumb +
       '<h3>' + esc(p.te) + '</h3>' +
       '<div class="en">' + esc(p.en) + '</div>' +
-      '<p>' + esc(p.desc) + '</p>' +
+      '<p>' + esc(p.desc) + '</p>' + md.vbtn +
       '<dl class="meta">' +
         '<dt>సమయం</dt><dd' + (p.time ? '' : ' class="tbc"') + '>' + esc(p.time || TBC) + '</dd>' +
         '<dt>రుసుము</dt><dd' + (p.fee ? '' : ' class="tbc"') + '>' + esc(p.fee || TBC) + '</dd>' +
