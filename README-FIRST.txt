@@ -1,6 +1,4 @@
-REKSHETRA TOURS -- FULL SEO UPDATE (v3.1)
-Ee folder lo anni files mee site root lo replace/add cheyyandi (subfolders vaddu). README-FIRST.txt upload cheyyakandi.
-seo-pages.css ippudu avasaram ledu (delete cheyyochu).
-Pasupu "____" fields (timings, how-to-reach, history) lo asalu details nimpandi.
-Upload tarvata: Search Console lo sitemap.xml submit + important pages ki "Request indexing".
-404 avuthunna links: kaleshwaram.html lo 16 kshetra pages + 7 theertham pages (brahma, chitsukheswara, jnana, vayasa, pakshi, narasimha, hanuma).
+REKSHETRA TOURS -- v7 (Nitya Kalyanam rusumu + 3 homamulu)
+Maarina files: pujalu.html, timings.html, faq.html. Anni files replace cheyyandi. README upload cheyyakandi.
+Inka rusumu ivvani pujalu: homamulu (Navagraha, Chandi, Mrityunjaya), Rudrabhishekam, Shaswata pujalu, Nitya Kalyanam, Pradoshakala puja, special pujalu (Pitru tarpanam, Sangama harathi, Shivaratri, Karthika, Laksha bilvarchana, Satyanarayana vratham). Aa cards lo "ఆలయ కార్యాలయంలో నిర్ధారించుకోండి" ani kanipistundi.
+Migilinavi: how-to-reach.html, history.html, 23 kotha pages (noindex).
