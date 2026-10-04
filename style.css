@@ -485,3 +485,7 @@ a.ad-slot.empty{text-decoration:none; color:var(--maroon); font-weight:600;}
 .places-seo ul{columns:2; column-gap:32px; padding-left:18px; font-size:.92rem;}
 .places-seo li{margin:0 0 10px; break-inside:avoid;}
 @media (max-width:720px){.places-seo ul{columns:1;}}
+
+/* nav: kshetralu / theerthalu / sangamamulu */
+@media (min-width:901px) and (max-width:1320px){ .nav-links{gap:12px; font-size:.88rem;} .nav-links a.nav-puja{padding:6px 12px;} }
+@media (min-width:901px) and (max-width:1060px){ .nav-links{gap:8px; font-size:.8rem;} .nav-links a.nav-puja{padding:5px 9px;} .brand{font-size:.95rem;} }
