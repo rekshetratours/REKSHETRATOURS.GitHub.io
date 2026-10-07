@@ -497,3 +497,9 @@ a.city{position:relative;color:#7a1723;font-weight:600;text-decoration:none;bord
 a.city::after{content:attr(data-tip);position:absolute;left:0;top:125%;width:max-content;max-width:min(260px,70vw);background:#33251b;color:#fff;padding:7px 10px;border-radius:8px;font-size:.8rem;font-weight:400;line-height:1.5;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:20}
 a.city:hover::after,a.city:focus-visible::after{opacity:1;visibility:visible}
 .rt-note{font-size:.88rem;color:#6a5a4a}
+
+/* v-final: bolder top menu */
+.nav-links a{font-weight:700;}
+@media (min-width:901px) and (max-width:1360px){ .nav-links{gap:9px; font-size:.82rem;} .nav-links a.nav-puja{padding:5px 10px;} .nav-inner .brand{font-size:.95rem;} }
+@media (min-width:901px) and (max-width:1100px){ .nav-links{gap:6px; font-size:.74rem;} .nav-links a.nav-puja{padding:4px 7px;} .nav-inner .brand{font-size:.85rem;} }
+@media (min-width:901px) and (max-width:980px){ .nav-links{gap:4px; font-size:.68rem;} .nav-links a.nav-puja{padding:3px 6px;} .nav-inner .brand{font-size:.78rem;} .nav-inner{padding-left:10px;padding-right:10px;} }
