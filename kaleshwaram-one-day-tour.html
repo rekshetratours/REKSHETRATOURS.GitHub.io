@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="te">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>కాళేశ్వరం ఒక్క రోజు యాత్ర</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@600;800&family=Noto+Sans+Telugu:wght@400;500;600&display=swap">
+<style>
+  /* Layout: one vertical river-line route; numbered stops hang off it, lettered side visits branch from their parent stop. */
+  :root {
+    --bg: #eef3f2;
+    --surface: #ffffff;
+    --ink: #12292e;
+    --muted: #4f6a6e;
+    --river: #0f5560;
+    --accent: #b8530a;
+    --accent-soft: #fbe8d2;
+    --line: #bfd0d0;
+    --font-display: "Noto Serif Telugu", "Noto Serif", Georgia, serif;
+    --font-body: "Noto Sans Telugu", "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b1a1e;
+      --surface: #12272c;
+      --ink: #e6f0ef;
+      --muted: #9db5b6;
+      --river: #5fb6bf;
+      --accent: #f0a14d;
+      --accent-soft: #3a2a17;
+      --line: #2a4247;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b1a1e;
+    --surface: #12272c;
+    --ink: #e6f0ef;
+    --muted: #9db5b6;
+    --river: #5fb6bf;
+    --accent: #f0a14d;
+    --accent-soft: #3a2a17;
+    --line: #2a4247;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    padding-inline: 16px;
+    padding-block: 24px 40px;
+  }
+  .wrap { max-width: 640px; margin-inline: auto; }
+
+  header { display: flex; flex-direction: column; gap: 10px; padding-block-end: 20px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+  }
+  h1 {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(28px, 7vw, 40px); line-height: 1.35; margin: 0;
+    text-wrap: balance; color: var(--river);
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .daybadge {
+    font-size: 13px; font-weight: 600; padding: 2px 12px; border-radius: 999px;
+    background: var(--river); color: var(--bg);
+  }
+  .tag {
+    font-size: 13px; padding: 2px 12px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--muted); background: var(--surface);
+  }
+  .sub { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .progress { display: flex; flex-direction: column; gap: 6px; margin-block-start: 6px; }
+  .progress-top { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+  .bar > span { display: block; height: 100%; width: 0; background: var(--accent); transition: width .25s ease; }
+
+  ol.route { list-style: none; margin: 0; padding: 0; position: relative; display: flex; flex-direction: column; gap: 14px; }
+  ol.route::before {
+    content: ""; position: absolute; left: 21px; top: 22px; bottom: 22px; width: 3px;
+    background: var(--river); opacity: .35; border-radius: 2px;
+  }
+
+  .stop { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; }
+  .badge {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--river); color: var(--bg);
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 800; font-size: 18px;
+    position: relative; z-index: 1; font-variant-numeric: tabular-nums;
+  }
+  .stop.side { margin-inline-start: 22px; grid-template-columns: 34px minmax(0, 1fr); }
+  .stop.side .badge { width: 34px; height: 34px; font-size: 14px; background: var(--accent); color: var(--surface); }
+  .stop.side::before {
+    content: ""; position: absolute; left: -22px; top: 17px; width: 22px; height: 3px;
+    background: var(--accent); opacity: .6;
+  }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0;
+  }
+  .stop.done .card { border-color: var(--accent); background: var(--accent-soft); }
+  label.row { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+  label.row input { width: 22px; height: 22px; margin: 4px 0 0; accent-color: var(--accent); flex: none; cursor: pointer; }
+  label.row input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .title { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.5; text-wrap: balance; }
+  .en { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .note { margin: 2px 0 0 34px; font-size: 14px; color: var(--ink); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0 34px; }
+  .chip {
+    font-size: 14px; padding: 2px 12px; border-radius: 999px;
+    border: 1px solid var(--accent); color: var(--accent); background: transparent;
+  }
+  .chip-lead { margin: 8px 0 0 34px; font-size: 13px; color: var(--muted); }
+
+  footer { margin-block-start: 28px; padding-block-start: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
+  @media (prefers-reduced-motion: reduce) { .bar > span { transition: none; } }
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Kaleshwaram One-Day Tour</span>
+    <div class="tags">
+      <span class="daybadge">1 Day</span>
+      <span class="tag">Temple Darshan</span>
+      <span class="tag">Triveni Sangamam</span>
+      <span class="tag">Local Sightseeing</span>
+    </div>
+    <h1>కాళేశ్వరం ఒక్క రోజు యాత్ర</h1>
+    <p class="sub">త్రివేణి సంగమ స్నానంతో మొదలై దక్షిణామూర్తి దర్శనంతో ముగిసే 11 స్టాప్‌ల యాత్ర. దర్శనం అయిన ప్రతి చోటా టిక్ చేసుకోండి.</p>
+    <div class="progress" aria-live="polite">
+      <div class="progress-top"><span>దర్శనాలు పూర్తయినవి</span><span id="count">0 / 12</span></div>
+      <div class="bar"><span id="fill"></span></div>
+    </div>
+  </header>
+
+  <ol class="route" id="route"></ol>
+
+  <footer>
+    <span>గమనిక: ప్రతి స్టాప్ వద్ద పూజా సమయాలు, దర్శన వేళలు ఆలయ సిబ్బందిని అడిగి తెలుసుకోండి.</span>
+    <span>rekshetratours.com</span>
+  </footer>
+</div>
+
+<script>
+  var STOPS = [
+  {
+    "id": "a1",
+    "n": "1",
+    "t": "త్రివేణి సంగమం",
+    "en": "Triveni Sangamam · Holy dip",
+    "note": "పవిత్ర స్నానం"
+  },
+  {
+    "id": "a1k",
+    "n": "2",
+    "t": "శ్రీ కాళేశ్వర ముక్తీశ్వర స్వామి దర్శనం",
+    "en": "Sri Kaleshwara Mukteshwara Swamy darshanam"
+  },
+  {
+    "id": "a2",
+    "n": "3",
+    "t": "ఆది ముక్తీశ్వర స్వామి దర్శనం",
+    "en": "Sri Aadi Mukteshwara Swamy darshanam"
+  },
+  {
+    "id": "a2a",
+    "n": "A",
+    "t": "నల్లగొండ పోచమ్మ దర్శనం",
+    "side": true,
+    "en": "Nalgonda Pochamma darshanam"
+  },
+  {
+    "id": "a3",
+    "n": "4",
+    "t": "యమ గుండం దర్శనం",
+    "en": "Yama Gundam darshanam"
+  },
+  {
+    "id": "a3a",
+    "n": "A",
+    "t": "భక్తాంజనేయ స్వామి దర్శనం",
+    "side": true,
+    "en": "Bhaktanjaneya Swamy darshanam",
+    "note": "యమ గుండం కట్టమీద"
+  },
+  {
+    "id": "a4",
+    "n": "5",
+    "t": "సంగమేశ్వర స్వామి దర్శనం",
+    "en": "Sangameshwara Swamy darshanam"
+  },
+  {
+    "id": "a5",
+    "n": "6",
+    "t": "గోదావరి ఘాట్ దర్శనం",
+    "en": "Godavari Ghat darshanam",
+    "lead": "ఇక్కడ చేయించుకోవాలనుకునేవారికి:",
+    "chips": [
+      "పిండప్రదానాలు",
+      "తర్పణాలు",
+      "వాయనం (వల్లి) ఇచ్చుట"
+    ]
+  },
+  {
+    "id": "a5a",
+    "n": "A",
+    "t": "108 లింగాల దర్శనం",
+    "side": true,
+    "en": "108 Lingas darshanam"
+  },
+  {
+    "id": "a6",
+    "n": "7",
+    "t": "రామాలయం దర్శనం",
+    "en": "Ramalayam darshanam"
+  },
+  {
+    "id": "a7",
+    "n": "8",
+    "t": "చంద్రశేఖర స్వామి దర్శనం",
+    "en": "Chandrashekhara Swamy darshanam"
+  },
+  {
+    "id": "a8",
+    "n": "9",
+    "t": "లక్ష్మీ నరసింహ స్వామి దర్శనం",
+    "en": "Lakshmi Narasimha Swamy darshanam"
+  },
+  {
+    "id": "a9",
+    "n": "10",
+    "t": "ఆంజనేయ స్వామి దర్శనం",
+    "en": "Anjaneya Swamy darshanam",
+    "note": "ఆది ముక్తీశ్వర స్వామి ఆలయం బైపాస్ రోడ్డు వద్ద"
+  },
+  {
+    "id": "a10",
+    "n": "11",
+    "t": "దక్షిణామూర్తి దర్శనం",
+    "en": "Dakshinamurthy darshanam"
+  }
+];
+  var KEY = "kaleshwaram-yatra-done";
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { done = {}; }
+
+  var route = document.getElementById("route");
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+  STOPS.forEach(function (s) {
+    var li = el("li", "stop" + (s.side ? " side" : "") + (done[s.id] ? " done" : ""));
+    li.appendChild(el("div", "badge", s.n));
+    var card = el("div", "card");
+    var label = el("label", "row");
+    var cb = document.createElement("input");
+    cb.type = "checkbox"; cb.id = "cb-" + s.id; cb.checked = !!done[s.id];
+    var box = el("div");
+    box.appendChild(el("div", "title", s.t));
+    box.appendChild(el("div", "en", s.en));
+    label.appendChild(cb); label.appendChild(box);
+    card.appendChild(label);
+    if (s.note) card.appendChild(el("div", "note", s.note));
+    if (s.lead) card.appendChild(el("div", "chip-lead", s.lead));
+    if (s.chips) {
+      var cw = el("div", "chips");
+      s.chips.forEach(function (c) { cw.appendChild(el("span", "chip", c)); });
+      card.appendChild(cw);
+    }
+    li.appendChild(card);
+    route.appendChild(li);
+    cb.addEventListener("change", function () {
+      if (cb.checked) done[s.id] = 1; else delete done[s.id];
+      li.classList.toggle("done", cb.checked);
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+      update();
+    });
+  });
+  function update() {
+    var n = Object.keys(done).length;
+    document.getElementById("count").textContent = n + " / " + STOPS.length;
+    document.getElementById("fill").style.width = (n / STOPS.length * 100) + "%";
+  }
+  update();
+</script>
+
+</body>
+</html>
