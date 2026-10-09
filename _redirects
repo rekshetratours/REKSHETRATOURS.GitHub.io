@@ -1,0 +1,2 @@
+# Netlify: /index.html -> /  (use if hosted on Netlify)
+/index.html  /  301!
