@@ -1,9 +1,9 @@
 
 const PLACES = [
-  {name:"Kaleshwaram Temple", tel:"కాలేశ్వరం ఆలయం", type:"Temple", dist:0, angle:0, r:0, cat:"temple", desc:"Sri Kaleshwara Mukteshwara Swamy Temple is a major pilgrimage destination known for its spiritual significance, Triveni Sangamam and rich cultural heritage."},
+  {name:"Kaleshwaram Temple", q:"Sri Kaleshwara Mukteshwara Swamy Temple, Kaleshwaram, Telangana", tel:"కాలేశ్వరం ఆలయం", type:"Temple", dist:0, angle:0, r:0, cat:"temple", desc:"Sri Kaleshwara Mukteshwara Swamy Temple is a major pilgrimage destination known for its spiritual significance, Triveni Sangamam and rich cultural heritage."},
   {name:"Triveni Sangamam", tel:"త్రివేణి సంగమం", type:"Theertha", dist:0.5, angle:200, r:1, cat:"theertha", desc:"The sacred confluence of three rivers beside Kaleshwaram temple, a key ritual bathing site for pilgrims."},
   {name:"Adi Mukteshwara Temple", tel:"ఆది ముక్తేశ్వర ఆలయం", type:"Temple", dist:1, angle:340, r:1, cat:"temple", desc:"An ancient shrine near Kaleshwaram associated with the presiding deity's earliest legend."},
-  {name:"Panakanti Brahmana Satram", tel:"పనకంటి బ్రాహ్మణ సత్రం", type:"Satram", dist:1, angle:110, r:1, cat:"heritage", desc:"A traditional choultry near Kaleshwaram offering rest and stay for pilgrims and devotees visiting the temple."},
+  {name:"Panakanti Brahmana Satram", q:"Panakanti Brahmana Satram, Gundam Cheruvu Colony, Adi Mukteshwaralayam Road, Kaleshwaram, Telangana 505504", tel:"పనకంటి బ్రాహ్మణ సత్రం", type:"Satram", dist:1, angle:110, r:1, cat:"heritage", desc:"A traditional choultry near Kaleshwaram offering rest and stay for pilgrims and devotees visiting the temple."},
   {name:"108 Shiva Lingala Temple", tel:"108 శివలింగాల ఆలయం", type:"Temple", dist:2, angle:60, r:1, cat:"temple", desc:"A temple complex housing 108 Shiva lingams, popular with devotees for a full pradakshina circuit."},
   {name:"Saraswati Temple", tel:"సరస్వతి ఆలయం", type:"Temple", dist:3, angle:150, r:1, cat:"temple", desc:"A temple dedicated to the goddess of knowledge, part of the Kaleshwaram temple cluster."},
   {name:"Mukti Vanam", tel:"ముక్తి వనం", type:"Tourist Place", dist:4, angle:250, r:1, cat:"photo", desc:"A landscaped grove near the temple, popular for a quiet walk after darshan."},
@@ -63,6 +63,12 @@ function showDetail(p,i){
   const dp = document.querySelector('.detail-photo');
   dp.style.background = grad(i);
   dp.querySelector('.detail-photo-icon').textContent = markerIcon(p.cat);
+  // Get Directions -> selected place (not always the main temple)
+  const dir = document.getElementById('dDir');
+  if(dir){
+    const q = p.q || (p.name + (p.dist < 18 ? ', Kaleshwaram, Telangana' : ', Telangana'));
+    dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(q) + '&travelmode=driving';
+  }
 }
 
 document.querySelectorAll('.chip[data-filter]').forEach(chip=>{

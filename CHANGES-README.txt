@@ -12,6 +12,7 @@ CHANGES
 6. Footer Quick Links: 13 pages lo 2 lines layout (style.css lo chinna CSS add).
 7. 25 Panchakrosa pages lo title chinnaga: "| Kaleshwaram Panchakrosa Parikrama" -> "| Panchakrosa Parikrama".
 8. sitemap.xml: 9 missing pages add (booking + 8 nearby-place pages), lastmod 2026-10-10. Ippudu 63 URLs.
+9. Home page "Get Directions" button ippudu select chesina place ki veltundi (explorer.js + index.html). Marchina files: explorer.js, index.html.
 
 NOT UPLOADED (original zip lo undi, ee zip lo ledu): rekshetra-v18..v36.zip, rekshetratours-site.zip (live site lo public download avtayi), README.txt, README-FIRST.txt, paste-into-index-head.html (adi live page laaga index avtundi), footer-link-snippet.html, sitemap-snippet.xml, rekshetratours-seo-fixes.md.
 GitHub repo lo avi already unte, akkada nundi delete cheyandi.
