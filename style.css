@@ -541,3 +541,8 @@ a.city:hover::after,a.city:focus-visible::after{opacity:1;visibility:visible}
 .it-cta .btn-outline{display:inline-block; padding:13px 24px; background:var(--white);}
 .it-foot{text-align:center; font-size:.8rem; color:var(--ink-soft); margin:0 0 24px;}
 @media (prefers-reduced-motion:reduce){.it-bar span{transition:none;}}
+
+/* quick-links 2-line */
+.footer-grid .ql-col{grid-column:1/-1;order:10;}
+footer ul.ql{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px 18px;}
+footer ul.ql li{white-space:nowrap;}
