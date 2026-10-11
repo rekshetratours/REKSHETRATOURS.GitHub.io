@@ -546,7 +546,3 @@ a.city:hover::after,a.city:focus-visible::after{opacity:1;visibility:visible}
 .footer-grid .ql-col{grid-column:1/-1;order:10;}
 footer ul.ql{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px 18px;}
 footer ul.ql li{white-space:nowrap;}
-
-/* compact map legend (5 rows) so it covers fewer markers */
-.legend{padding:6px 8px; font-size:.64rem; line-height:1.45; left:8px; top:8px;}
-.legend .dot{width:7px; height:7px; margin-right:4px;}
