@@ -9,12 +9,20 @@ const PLACES = [
   {name:"Mukti Vanam", page:"mukti-vanam.html", tel:"ముక్తి వనం", type:"Tourist Place", dist:4, angle:250, r:1, cat:"photo", desc:"A landscaped grove near the temple, popular for a quiet walk after darshan."},
   {name:"Pushkar Ghat", page:"pushkar-ghat.html", tel:"పుష్కర్ ఘాట్", type:"Theertha", dist:4, angle:290, r:1, cat:"theertha", desc:"A riverside ghat used during Pushkaram festivities and daily ritual bathing."},
   {name:"Medigadda Barrage", page:"medigadda-barrage.html", tel:"మేడిగడ్డ బ్యారేజ్", type:"Barrage / Project", dist:7, angle:230, r:2, cat:"barrage", desc:"A major irrigation barrage on the Godavari, part of the Kaleshwaram Lift Irrigation Project."},
+  {name:"Kannepalli (Lakshmi) Pump House", q:"Kannepalli Pump House, Kaleshwaram Lift Irrigation Project, Mahadevpur, Telangana", tel:"కన్నెపల్లి (లక్ష్మీ) పంప్ హౌస్", type:"Pump House / Project", dist:10, angle:205, r:2, cat:"barrage", desc:"The Lakshmi pump house at Kannepalli, the first pumping station of the Kaleshwaram Lift Irrigation Project. A separate stop from Medigadda Barrage. (Approx. distance)"},
   {name:"Annaram Barrage", page:"annaram-barrage.html", tel:"అన్నారం బ్యారేజ్", type:"Barrage / Project", dist:12, angle:260, r:2, cat:"barrage", desc:"An engineering landmark and scenic river-front stop on the 50km circuit."},
-  {name:"Mahadevpur Temples", page:"mahadevpur-temples.html", tel:"మహాదేవ్‌పూర్ ఆలయాలు", type:"Temple Group", dist:18, angle:50, r:2, cat:"temple", desc:"A cluster of historic temples worth combining with a Kaleshwaram day trip."},
+  {name:"Uma Maheshwara Temple – Mahadevpur", page:"uma-maheshwara-mahadevpur.html", q:"Umamaheshwara Swamy Temple, Mahadevpur, Telangana", tel:"ఉమామహేశ్వర స్వామి ఆలయం – మహాదేవ్‌పూర్", type:"Temple", dist:18, angle:50, r:2, cat:"temple", desc:"Sri Uma Maheshwara Swamy temple at Mahadevpur, an easy stop on the way to or from Kaleshwaram."},
+  {name:"Mandaragiri Venkateswara Swamy Temple", q:"Mandaragiri Venkateswara Swamy Temple, Mahadevpur, Telangana", tel:"మందరగిరి వేంకటేశ్వర స్వామి ఆలయం", type:"Temple", dist:19, angle:75, r:2, cat:"temple", desc:"Mandaragiri Venkateswara Swamy temple in the Mahadevpur area, a hill-top Vaishnava shrine to combine with Mahadevpur darshan. (Approx. distance)"},
   {name:"Nainpaka Rock-cut Temple", page:"nainpaka-temple.html", tel:"నైన్‌పాక రాతి ఆలయం", type:"Heritage", dist:22, angle:30, r:2, cat:"heritage", desc:"A rare rock-cut cave temple, one of the heritage highlights within the 50km radius."},
   {name:"Somnur Triveni Sangam", page:"kubera-sangamam.html", tel:"సోమ్నూర్ త్రివేణి సంగమం", type:"Theertha", dist:28, angle:190, r:3, cat:"theertha", desc:"A second river confluence further along the circuit, less crowded than the main sangam."},
-  {name:"Chennur Temples", page:"chennur-temples.html", tel:"చెన్నూర్ ఆలయాలు", type:"Temple Group", dist:32, angle:290, r:3, cat:"temple", desc:"A temple town group offering an easy extension for multi-day itineraries."},
+  {name:"Amba Agasteshwara Swamy Temple – Chennur", page:"amba-agastheeshwara-chennur.html", q:"Amba Agasteshwara Swamy Temple, Chennur, Telangana", tel:"అంబ అగస్తేశ్వర స్వామి ఆలయం – చెన్నూరు", type:"Temple", dist:32, angle:285, r:3, cat:"temple", desc:"The ancient Amba Agasteshwara Swamy temple at Chennur."},
+  {name:"Ramalingeshwara Swamy Temple – Chennur", q:"Ramalingeswara Swamy Temple, Chennur, Telangana", tel:"రామలింగేశ్వర స్వామి ఆలయం – చెన్నూరు", type:"Temple", dist:32, angle:300, r:3, cat:"temple", desc:"Sri Ramalingeshwara Swamy temple in Chennur town."},
+  {name:"Kalaratri Mahakali Temple – Chennur", q:"Kalaratri Mahakali Temple, Chennur, Telangana", tel:"కాళరాత్రి మహాకాళి ఆలయం – చెన్నూరు", type:"Temple", dist:32, angle:315, r:3, cat:"temple", desc:"The Kalaratri Mahakali shakti shrine at Chennur."},
   {name:"Manthani Temples", page:"manthani-temples.html", tel:"మంథని ఆలయాలు", type:"Temple Group", dist:45, angle:340, r:3, cat:"temple", desc:"The farthest cluster on the 50km circuit, known for its riverside temple architecture."},
+  {name:"Kodavatanch (Kotancha) Temple", q:"Kodavatancha Temple, Telangana", tel:"కొడవటంచ ఆలయం", type:"Temple", dist:45, angle:355, r:3, cat:"temple", desc:"Kodavatanch (Kotancha) temple in the Manthani area, on the northern end of the circuit. (Approx. distance)"},
+  {name:"Sundilla Lakshmi Narasimha Swamy Temple", q:"Sundilla Lakshmi Narasimha Swamy Temple, Telangana", tel:"సుందిళ్ళ లక్ష్మీ నరసింహ స్వామి ఆలయం", type:"Temple", dist:55, angle:15, r:4, cat:"temple", ext:true, desc:"Lakshmi Narasimha Swamy temple at Sundilla, beyond Manthani on the extended circuit. (Approx. distance)"},
+  {name:"Sundilla (Parvathi) Barrage", q:"Sundilla Barrage (Parvathi Barrage), Telangana", tel:"సుందిళ్ళ (పార్వతి) బ్యారేజ్", type:"Barrage / Project", dist:55, angle:30, r:4, cat:"barrage", ext:true, desc:"The third barrage of the Kaleshwaram Lift Irrigation Project on the Godavari, near Manthani. Can be combined with the Sundilla temple. (Approx. distance)"},
+  {name:"Hemachala Lakshmi Narasimha Swamy Temple – Mallur", q:"Hemachala Lakshmi Narasimha Swamy Temple, Mallur, Mangapet, Telangana", tel:"హేమాచల లక్ష్మీ నరసింహ స్వామి ఆలయం – మల్లూరు", type:"Temple", dist:110, angle:150, r:4, cat:"temple", ext:true, desc:"The forest-set Hemachalam temple at Mallur (Mangapet mandal) with a self-manifested Narasimha deity. Far from Kaleshwaram, so plan as a separate extended-circuit day. (Approx. distance)"},
 ];
 const PALETTES = ["#e0995a,#a45a4a","#5b8fae,#2f6fae","#8fbf9a,#3f7a52","#c99a3d,#7a4fa0","#d98c8c,#7a1723","#a1c4d8,#2f6fae"];
 
@@ -37,7 +45,7 @@ PLACES.forEach((p,i)=>{
   list.appendChild(row);
 
   if(p.dist>0){
-    const radiusPct = [0,13,25,38][p.r];
+    const radiusPct = [0,13,25,38,45][p.r];
     const rad = p.angle * Math.PI/180;
     const x = 50 + radiusPct * Math.cos(rad);
     const y = 50 + radiusPct * Math.sin(rad);
