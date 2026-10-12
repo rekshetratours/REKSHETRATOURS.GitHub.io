@@ -1,0 +1,6 @@
+SEO additions based on supplied screenshots
+- Added page-specific keywords and completed Open Graph/Twitter metadata where missing for index, tours, pujalu, timings, ashta-theerthalu, and plan pages.
+- Added a floating WhatsApp enquiry button to HTML pages using the contact number supplied in the screenshots (9491018012).
+- Added tours, pujalu, timings, and plan URLs to sitemap.xml if they were absent.
+- Existing canonical URLs and schema blocks were retained.
+Before deployment, verify contact number, temple timings, image paths, and all page URLs. Google rankings/indexing are not guaranteed.
