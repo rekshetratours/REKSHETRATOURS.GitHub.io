@@ -546,3 +546,16 @@ a.city:hover::after,a.city:focus-visible::after{opacity:1;visibility:visible}
 .footer-grid .ql-col{grid-column:1/-1;order:10;}
 footer ul.ql{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px 18px;}
 footer ul.ql li{white-space:nowrap;}
+
+/* Visitor counter inside footer (rendered by visitor-counter.js into #rk-visits) */
+.footer-visits{max-width:1240px; margin:26px auto 0; text-align:center;}
+#rk-visits{display:none; margin:0 auto; padding:8px 20px; border:1px solid var(--gold); border-radius:999px;
+  background:rgba(255,255,255,.08); color:#f0e3c8; font-size:.9rem; font-weight:600; text-align:center;}
+#rk-visits .rk-v-num{font-size:1.1rem; margin-left:6px; color:var(--gold-light); font-weight:700;}
+
+/* Places list: linked names + Get Directions */
+.places-seo li a{color:var(--maroon); text-decoration:none;}
+.places-seo li strong a{border-bottom:1px dotted var(--maroon);}
+.places-seo li a:hover{color:var(--maroon-dark);}
+.places-seo .dir-link{display:inline-block; margin-left:4px; padding:2px 10px; border:1px solid var(--gold); border-radius:14px; background:var(--cream); font-size:.8rem; font-weight:700; white-space:nowrap; border-bottom:1px solid var(--gold);}
+.places-seo .dir-link:hover{background:var(--maroon); color:#fff;}
