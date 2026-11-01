@@ -1,0 +1,167 @@
+<title>గోసంరక్షణ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mandali&family=Instrument+Sans:wght@500;600&display=swap">
+<style>
+/* Layout: single reading column; hero, go mahatmyam list, the Gautama-Godavari story as a true sequence, then ways to serve */
+:root{
+  --bg:#f1f5ee; --surface:#ffffff; --fg:#1c2a1e; --muted:#566657; --line:#d3ddcf;
+  --leaf:#2b6a3b; --leaf-ink:#ffffff; --gold:#a8650f; --water:#0f5a78; --soft:#e3ece0;
+  --f-te:'Mandali','Noto Sans Telugu',sans-serif; --f-ui:'Instrument Sans',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1a12; --surface:#172419; --fg:#e8efe5; --muted:#a2b5a3; --line:#2a3d2d;
+  --leaf:#7fcf92; --leaf-ink:#0b1a0f; --gold:#f0b963; --water:#8ccbe6; --soft:#1b2c1f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1a12; --surface:#172419; --fg:#e8efe5; --muted:#a2b5a3; --line:#2a3d2d;
+  --leaf:#7fcf92; --leaf-ink:#0b1a0f; --gold:#f0b963; --water:#8ccbe6; --soft:#1b2c1f; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-te);font-size:17px;line-height:1.75;
+  padding-block:0 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:680px;margin:0 auto}
+header{padding-block:32px 8px}
+.eyebrow{font-family:var(--f-ui);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1{font-size:40px;line-height:1.2;margin:6px 0 10px;color:var(--leaf);text-wrap:balance}
+.lede{margin:0;font-size:19px;color:var(--fg);max-width:56ch}
+.org{margin:16px 0 0;padding:10px 14px;background:var(--soft);border-radius:10px;font-size:17px}
+.org b{color:var(--gold)}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-block:20px 4px}
+nav a{font-size:15px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg);text-decoration:none;min-height:40px;display:inline-flex;align-items:center}
+nav a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+section{margin-top:40px;scroll-margin-top:12px}
+h2{font-size:25px;line-height:1.35;margin:0 0 10px;color:var(--leaf);text-wrap:balance}
+p{margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.item h3{font-size:18px;margin:0 0 4px;color:var(--gold)}
+.item p{margin:0;font-size:16px;color:var(--fg)}
+.say{margin:18px 0;padding:14px 16px;background:var(--soft);border-radius:10px;font-size:18px}
+.story{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:0}
+.story li{display:grid;grid-template-columns:34px 1fr;gap:14px;padding-bottom:22px;position:relative}
+.story li::before{content:"";position:absolute;left:16px;top:34px;bottom:0;width:2px;background:var(--line)}
+.story li:last-child::before{display:none}
+.dot{width:34px;height:34px;border-radius:50%;background:var(--water);color:var(--leaf-ink);font-family:var(--f-ui);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center}
+.story h3{font-size:19px;margin:2px 0 4px;color:var(--water)}
+.story p{margin:0}
+.ways{display:grid;gap:10px;margin:14px 0 0;padding:0;list-style:none}
+.ways li{padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.ways b{color:var(--leaf)}
+.foot{margin-top:40px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:16px;min-width:460px}
+th,td{text-align:left;padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;background:var(--soft);color:var(--leaf);font-size:15px}
+td.amt,th.amt{text-align:right;white-space:nowrap}
+td.amt{font-family:var(--f-ui);font-weight:600;color:var(--gold);font-variant-numeric:tabular-nums}
+tr.grp td{background:var(--soft);color:var(--water);font-size:14px;padding-block:6px;border-top:1px solid var(--line)}
+.contact{margin-top:16px;padding:16px;border:1px solid var(--line);border-left:4px solid var(--leaf);border-radius:10px;background:var(--surface)}
+.contact p{margin:0}
+.contact .num{font-family:var(--f-ui);font-weight:600;font-size:26px;color:var(--leaf);margin-block:2px 10px;user-select:all}
+.contact .num span{font-family:var(--f-te);font-size:16px;font-weight:400;color:var(--muted)}
+.contact .wa{display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border-radius:999px;background:var(--leaf);color:var(--leaf-ink);text-decoration:none;font-size:16px}
+.contact .wa:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (max-width:420px){h1{font-size:34px}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">పనకంటి బ్రాహ్మణ సత్రం వారి ఆధ్వర్యంలో</div>
+  <h1>గోసంరక్షణ</h1>
+  <p class="lede">గోవును తల్లిగా కొలవడం మన సంప్రదాయం. గోవు గొప్పతనాన్ని, గౌతమ మహర్షి గోహత్య దోషం నుండి విముక్తి కోసం గోదావరిని భూమికి తెచ్చిన కథను ఇక్కడ తెలుసుకోండి.</p>
+  <p class="org"><b>పనకంటి బ్రాహ్మణ సత్రం</b> వారి ఆధ్వర్యంలో గోశాల, గోసంరక్షణ కార్యక్రమాలు జరుగును.</p>
+  <nav aria-label="విభాగాలు">
+    <a href="#mahatmyam">గో మహాత్మ్యం</a>
+    <a href="#katha">గోదావరి కథ</a>
+    <a href="#seva">గోసేవ</a>
+    <a href="#virALalu">విరాళాలు</a>
+  </nav>
+</header>
+
+<section id="mahatmyam">
+  <h2>గో మహాత్మ్యం</h2>
+  <p>పురాణాల్లో గోవును సకల దేవతల నివాసంగా చెప్పారు. తల్లి పాలిచ్చి పోషించినట్లే గోవు పాలతో, నెయ్యితో, ఎరువుతో, శ్రమతో కుటుంబాన్ని, వ్యవసాయాన్ని, ధర్మాన్ని నిలబెడుతుంది.</p>
+  <div class="grid">
+    <div class="item"><h3>దేవతల నివాసం</h3><p>గోవు శరీరంలో ముప్పై మూడు కోట్ల దేవతలు ఉంటారని సంప్రదాయ నమ్మకం. అందుకే గోవుకు చేసే పూజ అన్ని దేవతలకు చేసినట్లే అంటారు.</p></div>
+    <div class="item"><h3>పంచగవ్యాలు</h3><p>పాలు, పెరుగు, నెయ్యి, గోమూత్రం, గోమయం. పూజలు, శుద్ధి కార్యక్రమాలు, యజ్ఞాల్లో వీటి వినియోగం ఎంతో ప్రాముఖ్యమైనది.</p></div>
+    <div class="item"><h3>యజ్ఞానికి ఆధారం</h3><p>హోమాలకు కావలసిన ఆవు నెయ్యి, సమిధలకు గోమయం గోవు నుండే వస్తాయి. అందుకే గోవును యజ్ఞానికి మూలమని చెబుతారు.</p></div>
+    <div class="item"><h3>గోపాలకృష్ణుడు</h3><p>శ్రీకృష్ణుడు గోపాలుడిగా గోవులను కాచాడు. భగవద్గీతలో తాను ధేనువులలో కామధేనువునని చెప్పాడు.</p></div>
+    <div class="item"><h3>వ్యవసాయ ఆధారం</h3><p>ఎద్దు దుక్కి దున్నుతుంది, గోమయం నేలను సారవంతం చేస్తుంది. గ్రామీణ జీవనానికి గోవే వెన్నెముక.</p></div>
+    <div class="item"><h3>గోదానం</h3><p>గోదానం గొప్ప పుణ్యంగా, గోహత్య మహాపాపంగా శాస్త్రాలు చెబుతాయి. గోవును బాధించకుండా కాపాడటం ప్రతి ఒక్కరి ధర్మం.</p></div>
+  </div>
+  <p class="say">గోవు మనకు ఇచ్చేదే ఎక్కువ. మనం చేయాల్సింది ఆమెకు మేత, నీరు, నీడ, రక్షణ ఇవ్వడమే.</p>
+</section>
+
+<section id="katha">
+  <h2>గౌతమ మహర్షి, గోవు, గోదావరి కథ</h2>
+  <p>పురాణ సంప్రదాయం ప్రకారం గోదావరి "గౌతమి" అని కూడా పిలవబడటానికి, నాసిక్ దగ్గర త్ర్యంబకేశ్వర జ్యోతిర్లింగం వెలవడటానికి కారణమైన కథ ఇది.</p>
+  <ol class="story">
+    <li><div class="dot" aria-hidden="true">1</div><div>
+      <h3>బ్రహ్మగిరిపై గౌతముని ఆశ్రమం</h3>
+      <p>దక్షిణ భారతంలో బ్రహ్మగిరి ప్రాంతంలో గౌతమ మహర్షి తన భార్య అహల్యతో తపస్సు చేసుకుంటూ ఉండేవాడు. ఒకసారి భయంకరమైన కరువు వచ్చింది. గౌతముని తపస్సుకు మెచ్చి వరుణుడు ఆయన ఆశ్రమంలో నీరు, పంట ఎప్పుడూ తరగకుండా వరమిచ్చాడు. ఆ ఆశ్రమం ఆకలి తీర్చే ఆధారమైంది, అనేక మంది ఋషులు అక్కడ ఆశ్రయం పొందారు.</p>
+    </div></li>
+    <li><div class="dot" aria-hidden="true">2</div><div>
+      <h3>ఋషుల అసూయ, మాయా గోవు</h3>
+      <p>కరువు తీరాక కొందరు ఋషులు గౌతముని కీర్తిని చూసి అసూయపడ్డారు. ఆయనకు దోషం అంటగట్టాలని ఒక మాయా గోవును సృష్టించారు. ఆ బక్కచిక్కిన గోవు గౌతముని పంట పొలంలోకి వెళ్ళి మేయడం మొదలుపెట్టింది.</p>
+    </div></li>
+    <li><div class="dot" aria-hidden="true">3</div><div>
+      <h3>గోవు మరణం, గోహత్య దోషం</h3>
+      <p>పంట పాడవుతుందని గౌతముడు ఆ గోవును అదిలించడానికి దర్భ గడ్డితో తాకాడు. తాకగానే ఆ గోవు కూలి ప్రాణాలు విడిచింది. వెంటనే ఆ ఋషులు వచ్చి గౌతముడు గోహత్య చేశాడని నిందించారు. ఆశ్రమం విడిచి వెళ్ళమని, పాపం పోయే వరకు ఆయనతో కలవమని అన్నారు.</p>
+    </div></li>
+    <li><div class="dot" aria-hidden="true">4</div><div>
+      <h3>ప్రాయశ్చిత్తం కోసం శివ తపస్సు</h3>
+      <p>గౌతముడు వేదనతో ధ్యానంలోకి వెళ్ళగా ఇదంతా ఋషుల కల్పితమని తెలిసింది. అయినా ఆయన వినయంగా పాప పరిహారం కోసం శివుని ఆరాధించి తీవ్ర తపస్సు చేశాడు. శివుడు ప్రసన్నుడై వరం కోరమన్నాడు. గౌతముడు తన పాపం పోవడానికి గంగను ఇమ్మని ప్రార్థించాడు.</p>
+    </div></li>
+    <li><div class="dot" aria-hidden="true">5</div><div>
+      <h3>జటాజూటం నుండి గంగ</h3>
+      <p>శివుడు తన జటాజూటం నుండి గంగను విడిచిపెట్టాడు. గంగ గౌతముని వెంట బ్రహ్మగిరి నుండి ప్రవహించి, ఆయన చేసిన గోవు శరీరంపై పడగా ఆ గోవు మళ్ళీ బ్రతికింది. గౌతముడు పాపం నుండి విముక్తుడయ్యాడు.</p>
+    </div></li>
+    <li><div class="dot" aria-hidden="true">6</div><div>
+      <h3>గోదావరి ప్రవాహం</h3>
+      <p>గౌతముని ద్వారా భూమికి వచ్చినందున ఆ గంగ "గౌతమి" అయింది. గోవును బ్రతికించిన నది కనుక "గోదావరి" అనే పేరు వచ్చిందని చెబుతారు. గౌతముని కోరికపై శివుడు అక్కడ త్ర్యంబకేశ్వర రూపంలో వెలిశాడు. అక్కడి నుండి గోదావరి మహారాష్ట్ర, తెలంగాణ, ఆంధ్ర మీదుగా ప్రవహించి సముద్రంలో కలుస్తుంది.</p>
+    </div></li>
+  </ol>
+  <p class="say">గోహత్య దోషం పోవడానికి గంగ దిగివచ్చింది. అంటే గోవును కాపాడటం, గోవుకు అపచారం చేయకపోవడం ఎంత ముఖ్యమో ఈ కథ చెబుతుంది.</p>
+</section>
+
+<section id="seva">
+  <h2>గోసంరక్షణకు మనం చేయగలిగినవి</h2>
+  <ul class="ways">
+    <li><b>గ్రాసం దానం:</b> గోశాలలకు పచ్చగడ్డి, ఎండు గడ్డి, దాణా అందించండి. గోపూజ రోజుల్లో ఇది ఎంతో పుణ్యకార్యం.</li>
+    <li><b>గోశాలకు సహకారం:</b> సమీప గోశాలను సందర్శించి వారికి అవసరమైన సామగ్రి, వైద్య ఖర్చులకు తోడ్పడండి.</li>
+    <li><b>వృద్ధ గోవులకు ఆశ్రయం:</b> పాలు ఇవ్వని, వయసు మళ్ళిన గోవులను వదిలేయకుండా కాపాడేవారికి సహాయం చేయండి.</li>
+    <li><b>నీరు, నీడ:</b> వీధుల్లో తిరిగే గోవుల కోసం ఇంటి దగ్గర నీటి తొట్టి ఉంచండి.</li>
+    <li><b>ప్లాస్టిక్ వద్దు:</b> చెత్తతో పాటు ప్లాస్టిక్ కవర్లు వేయవద్దు. అవి తిని గోవులు తీవ్రంగా అనారోగ్యం పాలవుతాయి.</li>
+    <li><b>గోపూజ:</b> ప్రతిరోజూ లేదా శుక్రవారం, గోపాష్టమి వంటి పర్వదినాల్లో గోవుకు పసుపు, కుంకుమ, పండ్లు, గడ్డి సమర్పించి నమస్కరించండి.</li>
+  </ul>
+</section>
+
+<section id="virALalu">
+  <h2>విరాళాల పూర్తి పట్టిక</h2>
+  <p>మీ శక్తికి తగిన సేవను ఎంచుకోండి. కింద ఉన్న మొత్తాలు సూచించినవి. ఈ సేవలన్నీ పనకంటి బ్రాహ్మణ సత్రం వారి ఆధ్వర్యంలో జరుగుతాయి.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>సేవా పథకం</th><th>కాలవ్యవధి</th><th class="amt">సూచించిన మొత్తం</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="3">గో గ్రాసం</td></tr>
+        <tr><td>ఒక గోవు గ్రాసం</td><td>1 రోజు</td><td class="amt">₹51</td></tr>
+        <tr><td>వారపు గో గ్రాసం</td><td>7 రోజులు</td><td class="amt">₹351</td></tr>
+        <tr><td>మాస గో గ్రాసం</td><td>30 రోజులు</td><td class="amt">₹1,501</td></tr>
+        <tr><td>వార్షిక గో గ్రాసం</td><td>365 రోజులు</td><td class="amt">₹15,001</td></tr>
+        <tr class="grp"><td colspan="3">గోపూజ</td></tr>
+        <tr><td>గోపూజ – బ్రాహ్మణులచే</td><td>ఒక్కసారి / ఒక్కరోజు</td><td class="amt">₹1,516</td></tr>
+        <tr><td>శాశ్వత గోపూజ – బ్రాహ్మణులచే</td><td>సంవత్సరంలో ఒకరోజు</td><td class="amt">₹10,116</td></tr>
+        <tr><td>ప్రత్యేక గోపూజ – భక్తులచే స్వయంగా</td><td>ఒకసారి / జంటకు</td><td class="amt">₹2,116</td></tr>
+        <tr class="grp"><td colspan="3">సాధారణ విరాళం</td></tr>
+        <tr><td>గోసంరక్షణ విరాళం</td><td>ఒకసారి</td><td class="amt">₹1,001</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="contact">
+    <p>విరాళం వివరాలకు సంప్రదించగలరు</p>
+    <p class="num">7661842045 <span>(WhatsApp)</span></p>
+    <a class="wa" href="https://wa.me/917661842045" target="_blank" rel="noopener">WhatsApp లో సంప్రదించండి</a>
+  </div>
+</section>
+
+<p class="foot">ఈ కథ బ్రహ్మ పురాణం, శివ పురాణం వంటి గ్రంథాల సంప్రదాయ కథనం ఆధారంగా సంక్షిప్తంగా రాయబడింది. వేర్వేరు పురాణాల్లో కొన్ని వివరాలు కొద్దిగా భిన్నంగా ఉంటాయి.</p>
+</div>
