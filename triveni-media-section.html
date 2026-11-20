@@ -2,7 +2,8 @@
   triveni-sangamam.html lo footer mundu ee mottam block paste cheyandi.
   Ee 3 files same folder lo undali:
     triveni-sangamam-godavari-1200.jpg, triveni-sangamam.mp4, triveni-sangamam-poster.jpg
-  Directions point: 18.82442, 79.906694  (marchali ante, kinda DIR_LAT / DIR_LNG marchandi)
+  Directions point: VIP Ghat / Saraswati Ghat — 18.8230744, 79.9050598 (Google place 'VIP Ghat Kaleshwaram')
+  Marchali ante kinda DIR_LAT / DIR_LNG / PLACE_ID marchandi
 -->
 <section class="tvm" id="tv-media">
 <style>
@@ -35,7 +36,7 @@
   <figure class="tvm-card">
     <img src="triveni-sangamam-godavari-1200.jpg" width="1200" height="610" loading="lazy"
          alt="త్రివేణి సంగమం వద్ద గోదావరి నది, కాళేశ్వరం — Godavari river at Triveni Sangamam, Kaleshwaram">
-    <figcaption>త్రివేణి సంగమం వద్ద గోదావరి నది<small>Godavari river at Triveni Sangamam, Kaleshwaram</small></figcaption>
+    <figcaption>త్రివేణి సంగమం — VIP ఘాట్ / సరస్వతి ఘాట్ వద్ద గోదావరి నది<small>Godavari river at Triveni Sangamam (VIP Ghat / Saraswati Ghat), Kaleshwaram</small></figcaption>
   </figure>
 
   <figure class="tvm-card">
@@ -48,7 +49,7 @@
 </div>
 
 <div class="tvm-dir">
-  <b>📍 త్రివేణి సంగమానికి దారి</b>
+  <b>📍 త్రివేణి సంగమానికి దారి<span style="display:block;font-size:.9rem;color:#9a5b12;font-weight:600">VIP ఘాట్ / సరస్వతి ఘాట్ వద్ద</span></b>
   <div class="tvm-btns">
     <a class="tvm-btn" id="tvm-dir" target="_blank" rel="noopener" href="#">➤ Get Directions</a>
     <a class="tvm-btn alt" id="tvm-map" target="_blank" rel="noopener" href="#">🗺 Map లో చూడండి</a>
@@ -58,9 +59,9 @@
 
 <script>
 (function(){
-  var DIR_LAT = "18.82442", DIR_LNG = "79.906694";
-  var DIR = "https://www.google.com/maps/dir/?api=1&destination="+DIR_LAT+","+DIR_LNG+"&travelmode=driving";
-  var MAP = "https://www.google.com/maps/search/?api=1&query="+DIR_LAT+","+DIR_LNG;
+  var DIR_LAT = "18.8230744", DIR_LNG = "79.9050598", PLACE_ID = "ChIJayDqfsTtMjoRJYE4-BQCFJg";
+  var DIR = "https://www.google.com/maps/dir/?api=1&destination="+DIR_LAT+","+DIR_LNG+"&destination_place_id="+PLACE_ID+"&travelmode=driving";
+  var MAP = "https://www.google.com/maps/search/?api=1&query="+DIR_LAT+","+DIR_LNG+"&query_place_id="+PLACE_ID;
   document.getElementById("tvm-dir").href = DIR;
   document.getElementById("tvm-map").href = MAP;
   document.getElementById("tvm-gps").textContent = "GPS: "+DIR_LAT+", "+DIR_LNG;
