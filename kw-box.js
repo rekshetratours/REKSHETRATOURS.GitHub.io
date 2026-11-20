@@ -1,11 +1,16 @@
-/* Kaleshwaram Updates Box — auto-injects the side box on any page.
-   Use: <script src="kw-box.js" defer></script>  (index.html lo </body> mundu)
+/* Kaleshwaram Temple Info Box (ఆలయ సమాచారం)
+   Use: <script src="kw-box.js" defer></script>
+   - Page lo <div id="kw-slot"></div> unte, box akkade (column lo) vastundi.
+   - Lekapothe: desktop lo kudi vaipu floating box, mobile lo page chivara.
    Data: updates.json (same folder).  Full page: updates.html */
 (function(){
-  var MAX = 3;                       // box lo entha updates chupinchali
+  var MAX = 3;                         // box lo entha items chupinchali
   var LINK = "updates.html";
-  var MOBILE_BEFORE = "#pujalu-teaser"; // mobile/tablet lo box ee section mundu vastundi (leka pothe page chivara)
-  try{ if(sessionStorage.getItem("kwb-closed")) return; }catch(e){}
+  var TITLE = "🛕 ఆలయ సమాచారం";
+  var MOBILE_BEFORE = "";              // slot ledani page lo, mobile lo ee selector mundu pettali (optional)
+
+  var slot = document.getElementById("kw-slot");
+  if (!slot) { try{ if(sessionStorage.getItem("kwb-closed")) return; }catch(e){} }
 
   var font=document.createElement("link");
   font.rel="stylesheet"; font.href="https://fonts.googleapis.com/css2?family=Mandali&display=swap";
@@ -23,28 +28,42 @@
   ".kwb-d{display:block;font-size:.74rem;color:#7b6455;font-family:system-ui,sans-serif}"+
   ".kwb-f{display:block;text-align:center;padding:9px;background:#fff;border-top:1px solid var(--ln);color:var(--mr);text-decoration:none;font-size:.95rem}"+
   ".kwb-f:hover{background:#fff1d9}"+
-  "@media(min-width:1100px){.kwb{position:fixed;right:18px;top:110px;width:290px;margin:0;z-index:99999}}";
+  "@media(min-width:1100px){.kwb{position:fixed;right:18px;top:110px;width:290px;margin:0;z-index:99999}}"+
+  /* column (slot) mode */
+  ".kwb.kwb-slot{position:static;width:100%;margin:0;height:100%;display:flex;flex-direction:column;z-index:auto;box-shadow:0 3px 10px rgba(0,0,0,.1)}"+
+  ".kwb-slot .kwb-h{padding:12px 16px;font-size:1.2rem}"+
+  ".kwb-slot .kwb-b{flex:1;max-height:none;overflow:visible;padding:10px 16px}"+
+  ".kwb-slot .kwb-i{font-size:1.02rem}"+
+  ".kwb-slot .kwb-f{padding:12px;font-size:1rem}";
   var st=document.createElement("style"); st.textContent=css; document.head.appendChild(st);
 
   var today=new Date().toLocaleDateString("en-CA",{timeZone:"Asia/Kolkata"});
   function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 
-  fetch("updates.json?v="+Date.now()).then(function(r){return r.json()}).then(function(all){
-    var list=all.filter(function(u){return !u.until||u.until>=today})
-                .sort(function(a,b){return b.date>a.date?1:b.date<a.date?-1:0}).slice(0,MAX);
-    if(!list.length) return;
+  function build(list){
     var box=document.createElement("aside");
-    box.className="kwb"; box.setAttribute("aria-label","Temple updates");
-    box.innerHTML='<div class="kwb-h"><span>🔔 ఆలయ నవీకరణలు</span><button class="kwb-x" aria-label="Close">×</button></div>'+
-      '<div class="kwb-b">'+list.map(function(u){
+    box.className="kwb"+(slot?" kwb-slot":"");
+    box.setAttribute("aria-label","Temple information");
+    var body = list.length ? list.map(function(u){
         var isNew=(new Date(today)-new Date(u.date))<=3*864e5;
         return '<div class="kwb-i"><span class="kwb-tag'+(u.important?' imp':'')+'">'+esc(u.tag)+'</span>'+
           (isNew?'<span class="kwb-new">NEW</span>':'')+'<span class="kwb-d">'+esc(u.date)+'</span>'+esc(u.te)+'</div>';
-      }).join("")+'</div><a class="kwb-f" href="'+LINK+'">అన్ని నవీకరణలు చూడండి →</a>';
-    box.querySelector(".kwb-x").onclick=function(){box.hidden=true;try{sessionStorage.setItem("kwb-closed","1")}catch(e){}};
+      }).join("")
+      : '<div class="kwb-i">ప్రస్తుతం కొత్త సమాచారం లేదు.</div>';
+    box.innerHTML='<div class="kwb-h"><span>'+TITLE+'</span>'+(slot?'':'<button class="kwb-x" aria-label="Close">×</button>')+'</div>'+
+      '<div class="kwb-b">'+body+'</div><a class="kwb-f" href="'+LINK+'">అన్ని నవీకరణలు చూడండి →</a>';
     box.addEventListener("click",function(e){ if(e.target.closest(".kwb-b")) location.href=LINK; });
-    var slot = window.innerWidth < 1100 && MOBILE_BEFORE ? document.querySelector(MOBILE_BEFORE) : null;
-    if (slot && slot.parentNode) slot.parentNode.insertBefore(box, slot);
+    if (slot) { slot.appendChild(box); return; }
+    box.querySelector(".kwb-x").onclick=function(){box.hidden=true;try{sessionStorage.setItem("kwb-closed","1")}catch(e){}};
+    var before = window.innerWidth < 1100 && MOBILE_BEFORE ? document.querySelector(MOBILE_BEFORE) : null;
+    if (before && before.parentNode) before.parentNode.insertBefore(box, before);
     else (document.body||document.documentElement).appendChild(box);
-  }).catch(function(){});
+  }
+
+  fetch("updates.json?v="+Date.now()).then(function(r){return r.json()}).then(function(all){
+    var list=all.filter(function(u){return !u.until||u.until>=today})
+                .sort(function(a,b){return b.date>a.date?1:b.date<a.date?-1:0}).slice(0,MAX);
+    if(!list.length && !slot) return;
+    build(list);
+  }).catch(function(){ if(slot) build([]); });
 })();

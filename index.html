@@ -36,9 +36,10 @@
 <meta name="twitter:title" content="Rekshetra Tours | Kaleshwara Swamy Temple Tours">
 <meta name="twitter:description" content="Dedicated travel assistance for Sri Kaleshwara Mukteshwara Swamy Temple and nearby pilgrimage circuit.">
 <style>
-.ql-col .ql{display:block !important;column-count:2;column-gap:24px;list-style:none;padding:0;margin:0}
+.ql-col .ql{display:block !important;column-count:3;column-gap:24px;list-style:none;padding:0;margin:0}
 .ql-col .ql li{break-inside:avoid;margin-bottom:8px}
-@media (max-width:360px){.ql-col .ql{column-count:1}}
+@media (max-width:600px){.ql-col .ql{column-gap:12px;font-size:.92rem}}
+@media (max-width:340px){.ql-col .ql{column-count:2}}
 </style>
 </head>
 <body data-page="index">
@@ -88,31 +89,41 @@
   </div>
 </section>
 
-<section id="pujalu-teaser">
-  <div class="section-head">
-    <div class="rule">✦</div>
-    <h2>పూజలు &amp; సేవలు</h2>
-    <p>కాళేశ్వర క్షేత్రంలో జరిగే పూజల వివరాలు తెలుసుకోండి.<br>Pujas and sevas at Kaleshwaram temple.</p>
-  </div>
-  <div class="pt-grid">
-    <a class="pt-card" href="pujalu.html"><span class="pt-ico">🪔</span><b>నిత్య పూజలు</b><small>Daily pujas</small></a>
-    <a class="pt-card" href="pujalu.html#shaswata"><span class="pt-ico">🕉</span><b>శాశ్వత పూజలు</b><small>Permanent pujas</small></a>
-    <a class="pt-card" href="pujalu.html#special"><span class="pt-ico">🔱</span><b>ప్రత్యేక పూజలు</b><small>Special pujas</small></a>
+<section id="home-cols">
+  <div class="hc-grid">
+    <div class="hc-left" id="pujalu-teaser">
+      <div class="section-head">
+        <div class="rule">✦</div>
+        <h2>పూజలు &amp; సేవలు</h2>
+        <p>కాళేశ్వర క్షేత్రంలో జరిగే పూజల వివరాలు తెలుసుకోండి.<br>Pujas and sevas at Kaleshwaram temple.</p>
+      </div>
+      <div class="pt-grid">
+        <a class="pt-card" href="pujalu.html"><span class="pt-ico">🪔</span><b>నిత్య పూజలు</b><small>Daily pujas</small></a>
+        <a class="pt-card" href="pujalu.html#shaswata"><span class="pt-ico">🕉</span><b>శాశ్వత పూజలు</b><small>Permanent pujas</small></a>
+        <a class="pt-card" href="pujalu.html#special"><span class="pt-ico">🔱</span><b>ప్రత్యేక పూజలు</b><small>Special pujas</small></a>
+      </div>
+    </div>
+    <div class="hc-right" id="kw-slot"></div>
   </div>
 </section>
 <style>
-#pujalu-teaser{padding-top:26px}
-#pujalu-teaser .section-head h2{font-size:2rem}
-#pujalu-teaser .section-head p{font-size:1.1rem}
-#pujalu-teaser .pt-grid{max-width:1000px;margin:0 auto;padding:0 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-#pujalu-teaser .pt-card{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;text-decoration:none;color:#722a2a;background:#fff;border:1px solid #ead9bd;border-top:5px solid #d9791a;border-radius:14px;padding:24px 14px;box-shadow:0 3px 10px rgba(0,0,0,.1)}
+#home-cols{padding:26px 0 10px}
+#home-cols .hc-grid{max-width:1100px;margin:0 auto;padding:0 18px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+#home-cols .hc-left,#home-cols .hc-right{min-width:0}
+#pujalu-teaser .section-head{padding-top:0}
+#pujalu-teaser .section-head h2{font-size:1.8rem}
+#pujalu-teaser .section-head p{font-size:1.05rem}
+#pujalu-teaser .pt-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:0;padding:0}
+#pujalu-teaser .pt-card{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"ico t" "ico s";column-gap:16px;align-items:center;text-align:left;text-decoration:none;color:#722a2a;background:#fff;border:1px solid #ead9bd;border-left:5px solid #d9791a;border-radius:14px;padding:14px 18px;box-shadow:0 3px 10px rgba(0,0,0,.1)}
 #pujalu-teaser .pt-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.18)}
-#pujalu-teaser .pt-ico{font-size:2.6rem;line-height:1.2}
-#pujalu-teaser .pt-card b{font-size:1.45rem;line-height:1.35}
-#pujalu-teaser .pt-card small{font-size:1.05rem;color:#7a6a5f}
+#pujalu-teaser .pt-ico{grid-area:ico;font-size:2.2rem;line-height:1.2}
+#pujalu-teaser .pt-card b{grid-area:t;font-size:1.3rem;line-height:1.35}
+#pujalu-teaser .pt-card small{grid-area:s;font-size:1rem;color:#7a6a5f}
+@media (max-width:820px){#home-cols .hc-grid{grid-template-columns:1fr}}
 </style>
 
-<section id="gosamrakshana-teaser">
+<!-- గోసంరక్షణ విభాగం ప్రస్తుతం దాచబడింది. తిరిగి చూపాలంటే కింది లైన్‌లో style="display:none" తీసేయండి. -->
+<section id="gosamrakshana-teaser" style="display:none">
   <div class="section-head">
     <div class="rule">✦</div>
     <h2>గోసంరక్షణ</h2>
