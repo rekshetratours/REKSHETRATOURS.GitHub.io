@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Updates Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Mandali&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#fffaf2;font-family:'Mandali',system-ui,sans-serif;color:#2b1a12;padding:16px}
+  .w{max-width:720px;margin:0 auto}
+  h1{font-size:1.3rem;color:#7a1f1f;font-weight:400}
+  label{display:block;margin:10px 0 3px;font-size:.9rem}
+  input,textarea,select{width:100%;padding:9px;border:1px solid #f0dcc0;border-radius:8px;font:inherit;background:#fff}
+  .r{display:flex;gap:10px}.r>*{flex:1}
+  button{padding:10px 16px;border:0;border-radius:9px;background:#7a1f1f;color:#fff;font:inherit;cursor:pointer;margin:10px 8px 0 0}
+  button.g{background:#25a244}button.s{background:#999}
+  .it{background:#fff;border:1px solid #f0dcc0;border-radius:10px;padding:9px 12px;margin-top:8px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;font-size:.92rem}
+  .it button{margin:0;padding:4px 10px;background:#c0392b}
+  .note{background:#fff1d9;border-radius:10px;padding:10px 12px;font-size:.88rem;margin:10px 0}
+</style>
+</head>
+<body><div class="w">
+<h1>🛠 నవీకరణల ఎడిటర్ (Updates Admin)</h1>
+<div class="note"><b>ఎలా వాడాలి:</b> 1) కింద కొత్త update రాయండి → "జోడించు". 2) "updates.json డౌన్‌లోడ్" నొక్కండి. 3) ఆ ఫైల్‌ను hosting లో పాత <code>updates.json</code> స్థానంలో upload చేయండి. అంతే — index box, updates page రెండూ మారతాయి.</div>
+
+<label>విభాగం (Tag)</label>
+<select id="tag"><option>ముఖ్య గమనిక</option><option>సూచన</option><option>ఉత్సవం</option><option>దర్శనం</option><option>రవాణా</option><option>ఇతర</option></select>
+<div class="r"><div><label>తేదీ</label><input type="date" id="date"></div>
+<div><label>ఎప్పటివరకు చూపాలి (optional)</label><input type="date" id="until"></div></div>
+<label>తెలుగులో</label><textarea id="te" rows="3"></textarea>
+<label>English (optional)</label><textarea id="en" rows="2"></textarea>
+<label><input type="checkbox" id="imp" style="width:auto"> ముఖ్యమైనది (Important)</label>
+<button id="add">➕ జోడించు</button>
+<button class="g" id="dl">⬇ updates.json డౌన్‌లోడ్</button>
+<button class="s" id="load">📂 ప్రస్తుత updates.json లోడ్</button>
+<div id="list"></div>
+
+<script>
+var data=[];
+var $=function(i){return document.getElementById(i)};
+$("date").value=new Date().toLocaleDateString("en-CA",{timeZone:"Asia/Kolkata"});
+function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function draw(){
+  data.sort(function(a,b){return b.date>a.date?1:b.date<a.date?-1:0});
+  $("list").innerHTML=data.map(function(u,i){
+    return '<div class="it"><div><b>'+esc(u.tag)+'</b> · '+esc(u.date)+(u.until?' → '+esc(u.until):'')+'<br>'+esc(u.te)+'</div><button onclick="del('+i+')">తొలగించు</button></div>';
+  }).join("")||"<p>ఇంకా ఏమీ లేవు.</p>";
+}
+function del(i){if(confirm("ఈ update తొలగించాలా?")){data.splice(i,1);draw()}}
+$("add").onclick=function(){
+  var te=$("te").value.trim(); if(!te){alert("తెలుగు టెక్స్ట్ రాయండి");return}
+  var u={date:$("date").value,tag:$("tag").value,important:$("imp").checked,te:te,en:$("en").value.trim()};
+  if($("until").value)u.until=$("until").value;
+  data.push(u);$("te").value="";$("en").value="";$("until").value="";$("imp").checked=false;draw();
+};
+$("dl").onclick=function(){
+  var b=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="updates.json";a.click();
+};
+$("load").onclick=function(){
+  fetch("updates.json?v="+Date.now()).then(function(r){return r.json()}).then(function(d){data=d;draw()})
+   .catch(function(){alert("updates.json లోడ్ కాలేదు (hosting లో ఉంచి తెరవండి)")});
+};
+$("load").click();
+</script>
+</div></body>
+</html>
