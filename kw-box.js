@@ -32,7 +32,7 @@
   /* column (slot) mode */
   ".kwb.kwb-slot{position:static;width:100%;margin:0;height:100%;display:flex;flex-direction:column;z-index:auto;box-shadow:0 3px 10px rgba(0,0,0,.1)}"+
   ".kwb-slot .kwb-h{padding:12px 16px;font-size:1.2rem}"+
-  ".kwb-slot .kwb-b{flex:1;max-height:none;overflow:visible;padding:10px 16px}"+
+  ".kwb-slot .kwb-b{flex:1;min-height:0;max-height:none;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding:10px 16px}"+
   ".kwb-slot .kwb-i{font-size:1.02rem}"+
   ".kwb-slot .kwb-f{padding:12px;font-size:1rem}"+
   "@media(max-width:620px){.kwb-slot .kwb-h{padding:9px 10px;font-size:1rem}.kwb-slot .kwb-b{padding:4px 10px}.kwb-slot .kwb-i{font-size:.86rem}.kwb-slot .kwb-d{font-size:.7rem}.kwb-slot .kwb-f{padding:9px 6px;font-size:.84rem}}";
