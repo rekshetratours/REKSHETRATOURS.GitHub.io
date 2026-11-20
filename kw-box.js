@@ -48,7 +48,7 @@
     var body = list.length ? list.map(function(u){
         var isNew=(new Date(today)-new Date(u.date))<=3*864e5;
         return '<div class="kwb-i"><span class="kwb-tag'+(u.important?' imp':'')+'">'+esc(u.tag)+'</span>'+
-          (isNew?'<span class="kwb-new">NEW</span>':'')+'<span class="kwb-d">'+esc(u.date)+'</span>'+esc(u.te)+'</div>';
+          (isNew?'<span class="kwb-new">NEW</span>':'')+'<span class="kwb-d">'+esc(u.date)+'</span>'+esc(u.short||u.te)+'</div>';
       }).join("")
       : '<div class="kwb-i">ప్రస్తుతం కొత్త సమాచారం లేదు.</div>';
     box.innerHTML='<div class="kwb-h"><span>'+TITLE+'</span>'+(slot?'':'<button class="kwb-x" aria-label="Close">×</button>')+'</div>'+

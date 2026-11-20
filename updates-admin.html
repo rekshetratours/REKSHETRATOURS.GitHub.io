@@ -25,10 +25,11 @@
 <div class="note"><b>ఎలా వాడాలి:</b> 1) కింద కొత్త update రాయండి → "జోడించు". 2) "updates.json డౌన్‌లోడ్" నొక్కండి. 3) ఆ ఫైల్‌ను hosting లో పాత <code>updates.json</code> స్థానంలో upload చేయండి. అంతే — index box, updates page రెండూ మారతాయి.</div>
 
 <label>విభాగం (Tag)</label>
-<select id="tag"><option>ముఖ్య గమనిక</option><option>సూచన</option><option>ఉత్సవం</option><option>దర్శనం</option><option>రవాణా</option><option>ఇతర</option></select>
+<select id="tag"><option>ముఖ్య సమాచారం</option><option>ముఖ్య గమనిక</option><option>సూచన</option><option>ఉత్సవం</option><option>దర్శనం</option><option>రవాణా</option><option>ఇతర</option></select>
 <div class="r"><div><label>తేదీ</label><input type="date" id="date"></div>
 <div><label>ఎప్పటివరకు చూపాలి (optional)</label><input type="date" id="until"></div></div>
 <label>తెలుగులో</label><textarea id="te" rows="3"></textarea>
+<label>చిన్న సారాంశం (హోమ్ పేజీ box కోసం — optional, పెద్ద నోటీసులకు)</label><textarea id="short" rows="2"></textarea>
 <label>English (optional)</label><textarea id="en" rows="2"></textarea>
 <label><input type="checkbox" id="imp" style="width:auto"> ముఖ్యమైనది (Important)</label>
 <button id="add">➕ జోడించు</button>
@@ -52,7 +53,8 @@ $("add").onclick=function(){
   var te=$("te").value.trim(); if(!te){alert("తెలుగు టెక్స్ట్ రాయండి");return}
   var u={date:$("date").value,tag:$("tag").value,important:$("imp").checked,te:te,en:$("en").value.trim()};
   if($("until").value)u.until=$("until").value;
-  data.push(u);$("te").value="";$("en").value="";$("until").value="";$("imp").checked=false;draw();
+  if($("short").value.trim())u.short=$("short").value.trim();
+  data.push(u);$("te").value="";$("short").value="";$("en").value="";$("until").value="";$("imp").checked=false;draw();
 };
 $("dl").onclick=function(){
   var b=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
