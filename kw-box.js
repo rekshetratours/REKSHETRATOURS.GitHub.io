@@ -34,7 +34,8 @@
   ".kwb-slot .kwb-h{padding:12px 16px;font-size:1.2rem}"+
   ".kwb-slot .kwb-b{flex:1;max-height:none;overflow:visible;padding:10px 16px}"+
   ".kwb-slot .kwb-i{font-size:1.02rem}"+
-  ".kwb-slot .kwb-f{padding:12px;font-size:1rem}";
+  ".kwb-slot .kwb-f{padding:12px;font-size:1rem}"+
+  "@media(max-width:620px){.kwb-slot .kwb-h{padding:9px 10px;font-size:1rem}.kwb-slot .kwb-b{padding:4px 10px}.kwb-slot .kwb-i{font-size:.86rem}.kwb-slot .kwb-d{font-size:.7rem}.kwb-slot .kwb-f{padding:9px 6px;font-size:.84rem}}";
   var st=document.createElement("style"); st.textContent=css; document.head.appendChild(st);
 
   var today=new Date().toLocaleDateString("en-CA",{timeZone:"Asia/Kolkata"});
