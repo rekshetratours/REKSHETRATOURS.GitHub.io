@@ -1,15 +1,14 @@
-REKSHETRA TOURS - SEO UPLOAD PACKAGE
+TRIVENI SANGAMAM — PHOTO + VIDEO + DIRECTIONS (VIP Ghat / Saraswati Ghat)
 
-1. upload-to-site-root/  -> upload these 4 files directly to your site's root (public_html):
-   kaleshwaram-temple.html, kaleshwaram-tours.html, robots.txt, sitemap.xml
+1) Ee 4 files ni triveni-sangamam.html unna folder lo upload cheyandi:
+     triveni-media.js
+     triveni-sangamam-godavari-1200.jpg
+     triveni-sangamam.mp4
+     triveni-sangamam-poster.jpg
 
-2. do-not-upload/paste-into-index-head.html -> NOT a page. Copy its code into the <head> of your existing index.html.
+2) triveni-sangamam.html lo </body> ki mundu ee okka line add cheyandi:
+     <script src="triveni-media.js" defer></script>
 
-3. Add photo: /images/kaleshwaram-temple-telangana.jpg (or change the path in the pages).
-
-4. Edit before going live (kaleshwaram-tours.html):
-   - Prices: replace "Rs ____" with your rates
-   - WhatsApp number 918008696869 (change if you use a different business number)
-   - Contact page link /contact.html (temple page/tours page buttons)
-
-5. After upload: Google Search Console -> Sitemaps -> submit https://rekshetratours.com/sitemap.xml
+Ayipoindi. Page lo footer mundu photo, video, Get Directions vastayi.
+Directions anni VIP Ghat / Saraswati Ghat ki veltayi (Pushkar Ghat ki kaadu).
+Aa page lo unna pata "Triveni" Get Directions links kuda automatic ga VIP Ghat ki marutayi.
