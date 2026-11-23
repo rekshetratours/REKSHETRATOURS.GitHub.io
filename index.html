@@ -52,6 +52,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="/" data-page="index">Home</a>
       <a href="kaleshwaram.html" data-page="kaleshwaram">Kaleshwaram యాత్ర</a>
+      <a class="nav-puja" href="godavari-pushkaralu-kaleshwaram-route.html" data-page="pushkaralu">🌊 గోదావరి పుష్కరాలు</a>
       <a class="nav-puja" href="pujalu.html" data-page="pujalu">🕉 పూజలు &amp; సేవలు</a>
       <a href="gosamrakshana.html" data-page="gosamrakshana">🐄 గోసంరక్షణ</a>
       <a href="kaleshwaram-temples.html" data-page="kshetralu">క్షేత్రములు</a>
@@ -89,6 +90,16 @@
     </div>
   </div>
 </section>
+
+<section class="pk-banner" id="pushkaralu-banner" style="background:linear-gradient(135deg,#5c0f18,#7a1723 55%,#c99a3d);color:#fff;padding:18px 16px;text-align:center">
+  <div style="max-width:960px;margin:0 auto">
+    <h2 style="margin:0 0 6px;color:#ffe9b0;font-size:clamp(20px,4.5vw,30px)">🌊 గోదావరి పుష్కరాలు 2027 – కాళేశ్వరం</h2>
+    <p id="pkHomeDates" style="margin:0 0 12px">దేశంలో ఎక్కడి నుండైనా కాళేశ్వరానికి రూట్ – మీ ప్రాంతం ఎంచుకోండి. తేదీలు, పోలీసు ట్రాఫిక్ రూట్ ప్రకటించగానే ఇక్కడ చూపిస్తాం.</p>
+    <a href="godavari-pushkaralu-kaleshwaram-route.html" style="display:inline-block;margin:4px;padding:11px 18px;background:#ffe9b0;color:#5c0f18;border-radius:8px;font-weight:700;text-decoration:none">🗺️ మీ ప్రాంతం నుండి రూట్ చూడండి →</a>
+    <a href="godavari-pushkaralu.html" style="display:inline-block;margin:4px;padding:11px 18px;border:1px solid #ffe9b0;color:#ffe9b0;border-radius:8px;text-decoration:none">పుష్కరాల వివరాలు</a>
+  </div>
+</section>
+<script>try{fetch('pushkaralu.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(d){if(d.dates_te){var e=document.getElementById('pkHomeDates');if(e)e.textContent=d.dates_te+' – మీ ప్రాంతం నుండి కాళేశ్వరం రూట్ చూడండి.';}}).catch(function(){})}catch(e){}</script>
 
 <section id="home-cols">
   <div class="hc-grid">
