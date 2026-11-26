@@ -44,7 +44,12 @@
 
 <style>
 .sb{max-width:1060px;margin:0 auto;padding:28px 18px 70px}
-.sb-demo{background:#fff3cd;border:1px solid #f0d78a;color:#6b4e00;border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:.92rem;display:none}
+.sb-paywrap{position:relative;margin-top:6px}
+.sb-soon{display:none;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);width:max-content;max-width:280px;background:var(--maroon);color:#fff;border-radius:10px;padding:9px 13px;font-size:.88rem;line-height:1.5;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.18);z-index:20;pointer-events:none}
+.sb-soon::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--maroon)}
+.sb-paywrap.soon:hover .sb-soon,.sb-paywrap.soon:focus-within .sb-soon,.sb-paywrap.soon.show .sb-soon{display:block}
+.sb-btn.soon{background:#a89383;cursor:not-allowed}
+.sb-btn.soon:hover{background:#a89383}
 .sb-note{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:10px 14px;margin-bottom:18px;font-size:.92rem;color:var(--ink-soft)}
 .sb-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:22px;align-items:start}
 @media(max-width:860px){.sb-grid{grid-template-columns:1fr}}
@@ -100,7 +105,6 @@
 </section>
 
 <div class="sb">
-  <div class="sb-demo" id="sbDemo">⚠️ <b>DEMO మోడ్</b> — ఇది పరీక్ష మాత్రమే. నిజమైన పేమెంట్, బుకింగ్ జరగవు.</div>
   <div class="sb-note">ℹ️ ఇది శ్రీ కాళేశ్వర ముక్తీశ్వర స్వామి దేవస్థానం అధికారిక వెబ్‌సైట్ కాదు. ఆలయ అనుమతితో నడిచే బుకింగ్ సహాయ సేవ. పూజల సమయాలు, నియమాలు ఆలయ కార్యాలయం నిర్ణయం ప్రకారం ఉంటాయి. ఆలయ సమాచారం: <a href="tel:+919491018012">94910 18012</a></div>
 
   <div class="sb-grid">
@@ -126,7 +130,10 @@
         <div id="sbTickets"></div>
         <label class="sb-chk"><input type="checkbox" id="cTerms"><span>నేను <a href="terms-and-conditions.html" target="_blank" rel="noopener">నిబంధనలు</a>, <a href="refund-policy.html" target="_blank" rel="noopener">రద్దు &amp; రీఫండ్ పాలసీ</a> అంగీకరిస్తున్నాను. రూమ్‌కు చెక్-ఇన్ సమయంలో గుర్తింపు కార్డు తప్పనిసరి.</span></label>
         <div class="sb-err" id="sbErr" role="alert"></div>
-        <button class="sb-btn" id="sbPay" style="width:100%;margin-top:6px">పేమెంట్ చేయండి</button>
+        <div class="sb-paywrap">
+          <div class="sb-soon" id="sbSoon" role="tooltip">🙏 ఆన్‌లైన్ పేమెంట్ తాత్కాలికంగా తీసివేయబడింది<br><b>త్వరలో అందుబాటులోకి వస్తుంది</b></div>
+          <button class="sb-btn" id="sbPay" style="width:100%">పేమెంట్ చేయండి</button>
+        </div>
       </div>
       <div id="sbDone"></div>
     </aside>
@@ -174,7 +181,7 @@ var DEMO_SERVICES = [
   var maxDate = addDays(today, CONFIG.WINDOW_DAYS);
   var services = [], taken = {}, cart = [], tab = "puja", selected = null, loadErr = "";
 
-  if(DEMO) $("#sbDemo").style.display = "block";
+  if(DEMO){ var pb=$("#sbPay"); pb.classList.add("soon"); pb.parentNode.classList.add("soon"); pb.setAttribute("aria-describedby","sbSoon"); }
 
   function svc(id){ return services.filter(function(s){return s.id===id;})[0]; }
 
@@ -351,11 +358,16 @@ var DEMO_SERVICES = [
   }
 
   $("#sbPay").onclick = function(){
+    if(DEMO){
+      var w = this.parentNode; w.classList.add("show");
+      clearTimeout(w._t); w._t = setTimeout(function(){ w.classList.remove("show"); }, 3500);
+      err("ఆన్‌లైన్ పేమెంట్ తాత్కాలికంగా తీసివేయబడింది — త్వరలో అందుబాటులోకి వస్తుంది.\nప్రస్తుతం బుకింగ్ కోసం WhatsApp లో సంప్రదించండి.");
+      return;
+    }
     var errs = validate(); err(errs.join("\n"));
     if(errs.length) return;
     var btn = $("#sbPay"), p = payload();
     var total = cart.reduce(function(a,b){return a+b.amount;},0);
-    if(DEMO){ if(confirm("DEMO మోడ్: నిజమైన పేమెంట్ జరగదు. బుకింగ్ పరీక్షించాలా?")) demoConfirm(p, total); return; }
     if(!window.Razorpay){ err("పేమెంట్ సిస్టమ్ లోడ్ కాలేదు. పేజీ రిఫ్రెష్ చేసి మళ్ళీ ప్రయత్నించండి."); return; }
     btn.disabled = true; btn.textContent = "దయచేసి వేచి ఉండండి…";
     function reset(){ btn.disabled = false; btn.textContent = "పేమెంట్ చేయండి"; }
