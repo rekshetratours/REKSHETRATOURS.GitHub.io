@@ -3,6 +3,5 @@ Allow: /
 Disallow: /triveni-media-section.html
 Disallow: /laksha-vattula-puja-section.html
 Disallow: /updates-admin.html
-Disallow: /footer-links.html
 
 Sitemap: https://rekshetratours.com/sitemap.xml
